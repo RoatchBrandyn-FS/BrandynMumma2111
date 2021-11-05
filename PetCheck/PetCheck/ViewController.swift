@@ -33,11 +33,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         ReadUserDoc()
         
-        print(allUsers.count.description)
-        for user in allUsers{
-            print(user.fullNameFL)
-        }
-        
     }
     
     //MARK: Actions
@@ -111,11 +106,49 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func CheckUsers() {
         
-        //Alert will be removed when this func is working correctly
-        let userCheckAlert = UIAlertController(title: "Action Complete", message: "Data should check all users and if complete, the user should be logged in", preferredStyle: .alert)
+        var credentialsConfrimed = false
         
-        userCheckAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(userCheckAlert, animated: true, completion: nil)
+        for user in allUsers {
+            
+            if credentialsConfrimed == false {
+                
+                print("emailTF: \(emailTF.text!) / user email: \(user.email)")
+                print("passwordTF: \(passwordTF.text!) / user password: \(user.password)")
+                
+                if user.email == emailTF.text && user.password == passwordTF.text {
+                    
+                    credentialsConfrimed = true
+                    confirmedUser = user
+                    
+                    
+                }
+                
+            }
+        }
+        
+        if credentialsConfrimed == true, let cu = confirmedUser {
+            
+            let userCheckAlert = UIAlertController(title: "Action Complete", message: "Email and Password worked! Should login \(cu.fullNameLF).", preferredStyle: .alert)
+            
+            userCheckAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(userCheckAlert, animated: true, completion: nil)
+            
+        }
+        else{
+            
+            let userCheckAlert = UIAlertController(title: "Login Error...", message: "Email and Password provied didn't match any users. Please try again.", preferredStyle: .alert)
+            
+            userCheckAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(userCheckAlert, animated: true, completion: nil)
+            
+        }
+        
+        emailTF.text?.removeAll()
+        passwordTF.text?.removeAll()
+        
+    }
+    
+    func ReadUserDoc() {
         
         //Check all users here
         // Get database reference
@@ -128,28 +161,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if error == nil {
                 //get all users and create a user obj for each
                 
-                if let snapshot = snapshot {
+                DispatchQueue.main.async {
                     
-                    DispatchQueue.main.async {
+                    snapshot?.documents.forEach({ (doc) in
                         
-                        snapshot.documents.forEach({ (doc) in
-                            
-                            guard let firstName = doc["firstName"] as? String, let lastName = doc["lastName"] as? String, let email = doc["email"] as? String, let password = doc["password"] as? String
-                            else{ return }
-                            
-                            self.allUsers.append(User(firstName: firstName, lastName: lastName, email: email, password: password))
-                            
-                            
-                        })
+                        guard let firstName = doc["firstName"] as? String, let lastName = doc["lastName"] as? String, let email = doc["email"] as? String, let password = doc["password"] as? String
+                        else{ return }
                         
-                        print(self.allUsers.count.description)
+                        print("\(firstName) /\(lastName) /\(email) /\(password)")
                         
-                    }
+                        self.allUsers.append(User(firstName: firstName, lastName: lastName, email: email, password: password))
+                        print("\(self.allUsers.count.description) - In snapshot foreach")
+                        
+                    })
                     
-                    print(self.allUsers.count.description)
+                    print("\(self.allUsers.count.description) - In dispatchqueue")
                     
                 }
-                
                 
             }
             else{
@@ -157,16 +185,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-                
-        
-        
-        
-    }
-    
-    func ReadUserDoc() {
-        
-        
-
         
     }
 
