@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,6 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Variables
     var confirmedUser: User? = nil
+    var allUsers = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         emailTF.delegate = self
         passwordTF.delegate = self
+        
+        ReadUserDoc()
+        
+        print(allUsers.count.description)
+        for user in allUsers{
+            print(user.fullNameFL)
+        }
         
     }
     
@@ -108,15 +117,56 @@ class ViewController: UIViewController, UITextFieldDelegate {
         userCheckAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(userCheckAlert, animated: true, completion: nil)
         
-        var allUsers = [User]()
-        
+        //Check all users here
         // Get database reference
+        let database = Firestore.firestore()
         
         //Read documents
+        database.collection("Users").getDocuments { (snapshot, error) in
+            
+            //check errors
+            if error == nil {
+                //get all users and create a user obj for each
+                
+                if let snapshot = snapshot {
+                    
+                    DispatchQueue.main.async {
+                        
+                        snapshot.documents.forEach({ (doc) in
+                            
+                            guard let firstName = doc["firstName"] as? String, let lastName = doc["lastName"] as? String, let email = doc["email"] as? String, let password = doc["password"] as? String
+                            else{ return }
+                            
+                            self.allUsers.append(User(firstName: firstName, lastName: lastName, email: email, password: password))
+                            
+                            
+                        })
+                        
+                        print(self.allUsers.count.description)
+                        
+                    }
+                    
+                    print(self.allUsers.count.description)
+                    
+                }
+                
+                
+            }
+            else{
+                print("Error occured loading from firebase")
+            }
+            
+        }
+                
         
         
         
+    }
+    
+    func ReadUserDoc() {
         
+        
+
         
     }
 
