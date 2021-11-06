@@ -30,13 +30,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         emailTF.delegate = self
         passwordTF.delegate = self
         
-        ReadUserDoc()
+        //ReadUserDoc()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        ReadUserDoc()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -159,7 +160,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func ReadUserDoc() {
         
-        //Check all users here
+        allUsers.removeAll()
+        
         // Get database reference
         let database = Firestore.firestore()
         

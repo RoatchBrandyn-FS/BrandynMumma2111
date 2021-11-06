@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
@@ -83,6 +84,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 
                 print("All TF's filled and both Passwords match.")
                 
+                SaveUserData(firstName: firstNameTF.text!, lastName: lastNameTF.text!, email: emailTF.text!, password: passwordTF.text!)
+                
+                let saveAlert = UIAlertController(title: "New User Registered!", message: "User registration successful for \(firstNameTF.text!) and ready to login!", preferredStyle: .alert)
+                
+                saveAlert.addAction(UIAlertAction(title: "Back to Login", style: .default, handler: nil))
+                
                 navigationController?.popToRootViewController(animated: true)
                 
             }
@@ -126,6 +133,26 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if confirmPasswordTF.text?.isEmpty == true {
             confirmPasswordLabel.textColor = UIColor.red
+        }
+        
+    }
+    
+    func SaveUserData(firstName: String, lastName: String, email: String, password: String){
+        
+        //database reference, like when reading from firestore
+        let database = Firestore.firestore()
+        
+        //add document to the user collection
+        database.collection("Users").addDocument(data: ["firstName": firstName, "lastName": lastName, "email": email, "password": password]) { (error) in
+            //Check for errors
+            
+            if error == nil {
+                //No Errors
+                
+            }
+            else{
+                //Deal with error(s)
+            }
         }
         
     }
