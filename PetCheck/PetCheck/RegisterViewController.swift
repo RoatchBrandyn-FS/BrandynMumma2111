@@ -17,6 +17,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     
+    //Labels
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var confirmPasswordLabel: UILabel!
+    
     //Buttons
     @IBOutlet weak var createBtn: UIButton!
     
@@ -35,27 +42,92 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: Actions
-    
-    //MARK: Objects
-    
-    //MARK: Methods
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    @IBAction func createBtnTapped(_ sender: UIButton) {
+        
         if firstNameTF.text?.isEmpty == true || lastNameTF.text?.isEmpty == true || emailTF.text?.isEmpty == true || passwordTF.text?.isEmpty == true || confirmPasswordTF.text?.isEmpty == true {
             
             print("TF is empty")
-            return false
+            
+            TFEmpty()
+            passwordTF.text?.removeAll()
+            confirmPasswordTF.text?.removeAll()
+            
+            let emptyAlert = UIAlertController(title: "Sorry...", message: "Not all required fields were filled. Please fill in all fields in red, and re-enter the password and confirmed password.", preferredStyle: .alert)
+            
+            emptyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            present(emptyAlert, animated: true, completion: nil)
             
         }
         
         else {
-            print("All TF's filled")
-            return true
+            
+            if passwordTF.text != confirmPasswordTF.text {
+                
+                let matchAlert = UIAlertController(title: "Sorry...", message: "All required fields are filled, but the password needs to match the confirmed password.", preferredStyle: .alert)
+                
+                matchAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                present(matchAlert, animated: true, completion: nil)
+                
+                passwordTF.text?.removeAll()
+                confirmPasswordTF.text?.removeAll()
+                
+                passwordLabel.textColor = UIColor.red
+                confirmPasswordLabel.textColor = UIColor.red
+                
+                
+            }
+            
+            else{
+                
+                print("All TF's filled and both Passwords match.")
+                
+                navigationController?.popToRootViewController(animated: true)
+                
+            }
+            
+            
         }
+        
     }
+    
+    //MARK: Objects
+    
+    //MARK: Methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func TFEmpty(){
+        
+        //reset all colors back to normal if something changes or if the user forgets to re input the password twice
+        for tf in [firstNameLabel, lastNameLabel, emailLabel, passwordLabel, confirmPasswordLabel] {
+            tf?.textColor = UIColor.black
+        }
+        
+        if firstNameTF.text?.isEmpty == true {
+            firstNameLabel.textColor = UIColor.red
+        }
+        
+        if lastNameTF.text?.isEmpty == true {
+            lastNameLabel.textColor = UIColor.red
+        }
+        
+        if emailTF.text?.isEmpty == true {
+            emailLabel.textColor = UIColor.red
+        }
+        
+        if passwordTF.text?.isEmpty == true {
+            passwordLabel.textColor = UIColor.red
+        }
+        
+        if confirmPasswordTF.text?.isEmpty == true {
+            confirmPasswordLabel.textColor = UIColor.red
+        }
+        
     }
     
 

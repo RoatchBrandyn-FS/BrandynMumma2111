@@ -248,10 +248,10 @@
                                         <rect key="frame" x="0.0" y="649.5" width="404" height="114.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QY7-PP-9lI">
-                                                <rect key="frame" x="158" y="42" width="88" height="30"/>
-                                                <state key="normal" title="Create/Login"/>
+                                                <rect key="frame" x="179" y="42" width="46" height="30"/>
+                                                <state key="normal" title="Create"/>
                                                 <connections>
-                                                    <segue destination="uoa-vT-IVd" kind="show" id="QnH-ZU-9ha"/>
+                                                    <action selector="createBtnTapped:" destination="Esp-JN-XGZ" eventType="touchUpInside" id="NYI-3m-Zhv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -309,11 +309,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="tmb-k7-oWx"/>
                     <connections>
+                        <outlet property="confirmPasswordLabel" destination="WLu-RE-gJw" id="bkH-SV-EVR"/>
                         <outlet property="confirmPasswordTF" destination="9hV-iE-pgZ" id="leV-6y-RQu"/>
                         <outlet property="createBtn" destination="QY7-PP-9lI" id="03h-jK-KJx"/>
+                        <outlet property="emailLabel" destination="0vh-mt-IF4" id="fui-7j-l0b"/>
                         <outlet property="emailTF" destination="mbw-iJ-Yag" id="xSc-UD-JjL"/>
+                        <outlet property="firstNameLabel" destination="9gh-aL-ByN" id="IU8-gh-mH5"/>
                         <outlet property="firstNameTF" destination="20Z-5s-DgM" id="g5V-tg-BlG"/>
+                        <outlet property="lastNameLabel" destination="Oxn-ep-6uA" id="OMN-mP-KmI"/>
                         <outlet property="lastNameTF" destination="cVk-si-4up" id="tJN-fo-nJ7"/>
+                        <outlet property="passwordLabel" destination="eIv-0N-yGW" id="pgX-Ic-kYw"/>
                         <outlet property="passwordTF" destination="zUa-jg-UFJ" id="5tf-xb-rXU"/>
                     </connections>
                 </viewController>
