@@ -16,6 +16,8 @@
 		5DFA6BA62734FA9D003F9A0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */; };
 		5DFA6BAA2734FBF0003F9A0A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DFA6BA92734FBF0003F9A0A /* FirebaseFirestore */; };
 		5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BAC27350B1F003F9A0A /* User.swift */; };
+		5DFA6BB22735D372003F9A0A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */; };
+		5DFA6BB5273636D1003F9A0A /* AllRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		5D7905F92734F54D0001C5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DFA6BAC27350B1F003F9A0A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRoomsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				5D7905F92734F54D0001C5F4 /* Info.plist */,
 				5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */,
 				5DFA6BAC27350B1F003F9A0A /* User.swift */,
+				5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */,
+				5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */,
 			);
 			path = PetCheck;
 			sourceTree = "<group>";
@@ -153,9 +159,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */,
+				5DFA6BB22735D372003F9A0A /* RegisterViewController.swift in Sources */,
 				5D7905F02734F54B0001C5F4 /* LoginViewController.swift in Sources */,
 				5D7905EC2734F54B0001C5F4 /* AppDelegate.swift in Sources */,
 				5D7905EE2734F54B0001C5F4 /* SceneDelegate.swift in Sources */,
+				5DFA6BB5273636D1003F9A0A /* AllRoomsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
