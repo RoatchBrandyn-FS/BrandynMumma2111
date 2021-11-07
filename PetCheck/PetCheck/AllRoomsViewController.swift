@@ -8,6 +8,15 @@
 import UIKit
 
 class AllRoomsViewController: UIViewController {
+    
+    //MARK: Outlets
+    
+    //views
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    //MARK: Variables
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +24,7 @@ class AllRoomsViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationItem.title = "Room Search"
         navigationItem.hidesBackButton = true
+        tableView.layer.cornerRadius = 20
         
     }
     

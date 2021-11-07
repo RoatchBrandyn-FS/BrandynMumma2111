@@ -133,26 +133,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-1m-rZ5">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9J-wW-Cfs">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="My Rooms" image="list.dash" catalog="system" id="RtT-Qs-0z4"/>
-                                    <tabBarItem title="Add New Room" image="plus" catalog="system" selectedImage="plus" id="8Xw-iZ-USP"/>
+                                    <barButtonItem title="My Rooms" id="DOb-iM-1wX"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Vf1-Vs-IUR"/>
+                                    <barButtonItem title="Add Room" image="plus" catalog="system" id="fhu-tV-zxQ"/>
                                 </items>
-                            </tabBar>
+                            </toolbar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W6S-dW-TTq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlx-Fq-UaX">
+                                <rect key="frame" x="5" y="149" width="404" height="659"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="room_cell_01" id="yqQ-iW-4Zc">
+                                        <rect key="frame" x="0.0" y="28" width="404" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yqQ-iW-4Zc" id="o0R-Px-Wc5">
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lYc-eL-14z"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="W6S-dW-TTq" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" id="0nz-uA-oIE"/>
+                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="top" secondItem="W6S-dW-TTq" secondAttribute="bottom" constant="5" id="61s-QJ-kn1"/>
+                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" constant="5" id="9oN-to-A8H"/>
+                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="top" secondItem="vlx-Fq-UaX" secondAttribute="bottom" constant="5" id="Jpi-wr-WSX"/>
+                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" id="KGo-lk-7Gn"/>
+                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="trailing" secondItem="lYc-eL-14z" secondAttribute="trailing" id="SZL-NY-kw7"/>
+                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="bottom" secondItem="lYc-eL-14z" secondAttribute="bottom" id="Sig-X6-22K"/>
+                            <constraint firstItem="lYc-eL-14z" firstAttribute="trailing" secondItem="vlx-Fq-UaX" secondAttribute="trailing" constant="5" id="XtW-wb-tsn"/>
+                            <constraint firstItem="W6S-dW-TTq" firstAttribute="top" secondItem="lYc-eL-14z" secondAttribute="top" id="zAa-pJ-Cps"/>
+                            <constraint firstItem="W6S-dW-TTq" firstAttribute="trailing" secondItem="lYc-eL-14z" secondAttribute="trailing" id="zko-CL-QmB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3M3-Lo-gIz">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="MPq-hS-cd2"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omN-H1-lak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="300"/>
+            <point key="canvasLocation" x="1960.8695652173915" y="300"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="zAy-CP-4Zg">
@@ -366,7 +398,6 @@
     </scenes>
     <resources>
         <image name="PawLarge" width="272.07000732421875" height="251.94999694824219"/>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
