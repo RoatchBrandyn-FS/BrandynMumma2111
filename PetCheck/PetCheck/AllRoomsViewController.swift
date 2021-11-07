@@ -8,26 +8,28 @@
 import UIKit
 import Firebase
 
-class AllRoomsViewController: UIViewController {
+class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Outlets
     
     //views
     @IBOutlet weak var tableView: UITableView!
     
+    //bar buttons
+    @IBOutlet weak var logoutBarBtn: UIBarButtonItem!
+    @IBOutlet weak var myRoomsBarBtn: UIBarButtonItem!
     
     //MARK: Variables
-    
-    //navigation buttons
-    @IBOutlet weak var logoutBarBtn: UIBarButtonItem!
     
     //user
     var currentUser: User!
     
     //arrays
     var allRooms = [Room]()
-    var searchRooms = [Room]()
-    var userRooms = [Room]()
+    var sortedRooms = [Room]()
+    
+    //bools
+    var userRoomOnly = true
     
 
     override func viewDidLoad() {
@@ -37,6 +39,9 @@ class AllRoomsViewController: UIViewController {
         navigationItem.title = "Room Search"
         navigationItem.hidesBackButton = true
         tableView.layer.cornerRadius = 20
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         
         
@@ -48,13 +53,14 @@ class AllRoomsViewController: UIViewController {
         
         print("\(allRooms.count.description) -> vwa")
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("All Rooms Count: \(allRooms.count.description) -> vda")
         
-        print("User Rooms Count: \(userRooms.count.description) -> vda")
+        print("User Rooms Count: \(sortedRooms.count.description) -> vda")
         
     }
     
@@ -65,6 +71,22 @@ class AllRoomsViewController: UIViewController {
         
     }
     
+    @IBAction func myRoomsTapped(_ sender: UIBarButtonItem) {
+        
+        sortedRooms.removeAll()
+        userRoomOnly = true
+        
+        for room in allRooms {
+            if room.creator == currentUser.fullNameLF {
+                sortedRooms.append(room)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    
+    
     //MARK: Objects
     
     //MARK: Methods
@@ -73,7 +95,7 @@ class AllRoomsViewController: UIViewController {
         
         //Clear lists
         allRooms.removeAll()
-        userRooms.removeAll()
+        sortedRooms.removeAll()
         
         //Set Database
         let database = Firestore.firestore()
@@ -103,13 +125,13 @@ class AllRoomsViewController: UIViewController {
                         self.allRooms.append(newRoom)
                         
                         if newRoom.creator == self.currentUser.fullNameLF {
-                            self.userRooms.append(newRoom)
+                            self.sortedRooms.append(newRoom)
                         }
                         
                         
                     })
                     
-                    
+                    self.tableView.reloadData()
                     
                 }
                 
@@ -123,6 +145,42 @@ class AllRoomsViewController: UIViewController {
         }
         
     }
+    
+    //MARK: Table View callbacks
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedRooms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //set reuse identifier to cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "room_cell_01", for: indexPath)
+        
+        //Configure cells for either situation
+        let room = sortedRooms[indexPath.row]
+        
+        cell.textLabel?.text = room.name
+        cell.detailTextLabel?.text = room.creator
+        
+        return cell
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if userRoomOnly == true {
+            return "My Rooms: \(sortedRooms.count.description)"
+        }
+        else {
+            return "Search Results: \(sortedRooms.count.description)"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    
     
 
     /*
