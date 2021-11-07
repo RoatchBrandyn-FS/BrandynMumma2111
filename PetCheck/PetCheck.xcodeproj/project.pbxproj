@@ -18,6 +18,7 @@
 		5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BAC27350B1F003F9A0A /* User.swift */; };
 		5DFA6BB22735D372003F9A0A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */; };
 		5DFA6BB5273636D1003F9A0A /* AllRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */; };
+		5DFA6BB827379756003F9A0A /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BB727379756003F9A0A /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5DFA6BAC27350B1F003F9A0A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRoomsViewController.swift; sourceTree = "<group>"; };
+		5DFA6BB727379756003F9A0A /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				5DFA6BAC27350B1F003F9A0A /* User.swift */,
 				5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */,
 				5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */,
+				5DFA6BB727379756003F9A0A /* Room.swift */,
 			);
 			path = PetCheck;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */,
 				5DFA6BB22735D372003F9A0A /* RegisterViewController.swift in Sources */,
+				5DFA6BB827379756003F9A0A /* Room.swift in Sources */,
 				5D7905F02734F54B0001C5F4 /* LoginViewController.swift in Sources */,
 				5D7905EC2734F54B0001C5F4 /* AppDelegate.swift in Sources */,
 				5D7905EE2734F54B0001C5F4 /* SceneDelegate.swift in Sources */,

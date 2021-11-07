@@ -176,9 +176,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3M3-Lo-gIz">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="MPq-hS-cd2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="MPq-hS-cd2">
+                            <connections>
+                                <action selector="logoutTapped:" destination="uoa-vT-IVd" id="2fS-Vj-9zc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutBarBtn" destination="MPq-hS-cd2" id="eLH-TK-qsF"/>
                         <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
                     </connections>
                 </viewController>

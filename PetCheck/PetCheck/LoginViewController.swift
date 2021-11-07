@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginBtn: UIButton!
     
     //MARK: Variables
-    var confirmedUser: User? = nil
+    var confirmedUser: User!
     var allUsers = [User]()
     
     override func viewDidLoad() {
@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        
+        confirmedUser = nil
         ReadUserDoc()
     }
     
@@ -213,6 +215,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
             print("Error - No Matching Segue Identifier")
             return false
         }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if let s = sender as? UIButton {
+            
+            if s.currentTitle! == "Login" {
+                
+                let destination = segue.destination as? AllRoomsViewController
+                
+                destination?.currentUser = confirmedUser
+                
+            }
+            
+        }
+        
         
     }
 
