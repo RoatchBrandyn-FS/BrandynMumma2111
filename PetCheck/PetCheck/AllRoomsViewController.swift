@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
     
     //MARK: Outlets
     
@@ -31,6 +31,9 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     //bools
     var userRoomOnly = true
     
+    //search items
+    var searchController = UISearchController(searchResultsController: nil)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,8 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        SearchSetup()
         
         
         
@@ -179,6 +184,42 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
+    
+    //MARK: Searchbar setup and Callbacks
+    
+    func SearchSetup() {
+        
+        //Setup
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        
+        //updates set to our updater
+        searchController.searchResultsUpdater = self
+        
+        //set searchbar
+        searchController.searchBar.delegate = self
+        searchController.searchBar.scopeButtonTitles = ["All", "Room Name", "Creator", "My Rooms"]
+        
+        //set to navigation
+        navigationItem.searchController = searchController
+        
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        print("updated")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("scope tapped")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Search button clicked/tapped")
+    }
+    
+    
+    
     
     
     

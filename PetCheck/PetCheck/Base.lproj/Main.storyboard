@@ -145,12 +145,8 @@
                                     <barButtonItem title="Add Room" image="plus" catalog="system" id="fhu-tV-zxQ"/>
                                 </items>
                             </toolbar>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="W6S-dW-TTq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlx-Fq-UaX">
-                                <rect key="frame" x="5" y="149" width="404" height="659"/>
+                                <rect key="frame" x="5" y="93" width="404" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="room_cell_01" textLabel="Nj2-H6-fTf" detailTextLabel="qXE-fn-mCH" style="IBUITableViewCellStyleSubtitle" id="yqQ-iW-4Zc">
@@ -183,16 +179,13 @@
                         <viewLayoutGuide key="safeArea" id="lYc-eL-14z"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="W6S-dW-TTq" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" id="0nz-uA-oIE"/>
-                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="top" secondItem="W6S-dW-TTq" secondAttribute="bottom" constant="5" id="61s-QJ-kn1"/>
                             <constraint firstItem="vlx-Fq-UaX" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" constant="5" id="9oN-to-A8H"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="top" secondItem="vlx-Fq-UaX" secondAttribute="bottom" constant="5" id="Jpi-wr-WSX"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" id="KGo-lk-7Gn"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="trailing" secondItem="lYc-eL-14z" secondAttribute="trailing" id="SZL-NY-kw7"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="bottom" secondItem="lYc-eL-14z" secondAttribute="bottom" id="Sig-X6-22K"/>
                             <constraint firstItem="lYc-eL-14z" firstAttribute="trailing" secondItem="vlx-Fq-UaX" secondAttribute="trailing" constant="5" id="XtW-wb-tsn"/>
-                            <constraint firstItem="W6S-dW-TTq" firstAttribute="top" secondItem="lYc-eL-14z" secondAttribute="top" id="zAa-pJ-Cps"/>
-                            <constraint firstItem="W6S-dW-TTq" firstAttribute="trailing" secondItem="lYc-eL-14z" secondAttribute="trailing" id="zko-CL-QmB"/>
+                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="top" secondItem="lYc-eL-14z" secondAttribute="top" constant="5" id="aZD-Xi-DLF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3M3-Lo-gIz">
@@ -204,6 +197,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logoutBarBtn" destination="MPq-hS-cd2" id="eLH-TK-qsF"/>
+                        <outlet property="myRoomsBarBtn" destination="DOb-iM-1wX" id="IZF-gY-0sG"/>
                         <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
                     </connections>
                 </viewController>
