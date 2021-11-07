@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: Actions
     @IBAction func btnTapped(_ sender: UIButton){
         
-        switch sender.currentTitle {
+        /*switch sender.currentTitle {
         case "Login":
             print("Login Tapped")
             CheckText()
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         default:
             print("Error - Not a valid button for this action")
-        }
+        }*/
         
     }
     
@@ -136,15 +136,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if credentialsConfrimed == true, let cu = confirmedUser {
-            
-            let userCheckAlert = UIAlertController(title: "Action Complete", message: "Email and Password worked! Should login \(cu.fullNameLF).", preferredStyle: .alert)
-            
-            userCheckAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(userCheckAlert, animated: true, completion: nil)
-            
-        }
-        else{
+        if credentialsConfrimed == false {
             
             let userCheckAlert = UIAlertController(title: "Login Error...", message: "Email and Password provied didn't match any users. Please try again.", preferredStyle: .alert)
             
@@ -195,6 +187,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 print("Error occured loading from firebase")
             }
             
+        }
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        print(identifier)
+        
+        if identifier == "LoginToAllRooms"{
+            
+            CheckText()
+            
+            if confirmedUser == nil {
+                return false
+            }
+            else{
+                return true
+            }
+        }
+        
+        else if identifier == "LoginToRegister" {
+            return true
+        }
+        else{
+            print("Error - No Matching Segue Identifier")
+            return false
         }
         
     }

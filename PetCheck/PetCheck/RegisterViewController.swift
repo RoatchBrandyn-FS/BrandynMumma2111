@@ -28,6 +28,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     //Buttons
     @IBOutlet weak var createBtn: UIButton!
     
+    //Views
+    @IBOutlet weak var viewContainerView: UIView!
+    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var tfView: UIView!
+    @IBOutlet weak var btnView: UIView!
+    
+    
     //MARK: Variables
 
     override func viewDidLoad() {
@@ -39,6 +46,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         for tf in [firstNameTF, lastNameTF, emailTF, passwordTF, confirmPasswordTF] {
             tf?.delegate = self
         }
+        
+        SetCorners()
         
     }
     
@@ -153,6 +162,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             else{
                 //Deal with error(s)
             }
+        }
+        
+    }
+    
+    func SetCorners() {
+        
+        for view in [viewContainerView, labelView, tfView, btnView]{
+            
+            view?.layer.cornerRadius = 20
+            
         }
         
     }

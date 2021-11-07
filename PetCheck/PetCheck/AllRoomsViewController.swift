@@ -14,6 +14,8 @@ class AllRoomsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         navigationItem.title = "Room Search"
+        navigationItem.hidesBackButton = true
+        
     }
     
 
