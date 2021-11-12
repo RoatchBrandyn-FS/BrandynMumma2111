@@ -176,6 +176,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ofj-zR-ckC" kind="show" identifier="SelectRoomToTabbed" id="9nF-OX-OIT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -208,6 +211,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omN-H1-lak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2223" y="80"/>
+        </scene>
+        <!--Tabbed View Controller-->
+        <scene sceneID="be7-W5-Jmy">
+            <objects>
+                <viewController id="Ofj-zR-ckC" customClass="TabbedViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N1I-6k-VgC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="shm-6m-TAZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="S1q-Xb-dmT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSo-fE-vma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3339" y="80"/>
         </scene>
         <!--Add Room View Controller-->
         <scene sceneID="3xP-PD-hJP">

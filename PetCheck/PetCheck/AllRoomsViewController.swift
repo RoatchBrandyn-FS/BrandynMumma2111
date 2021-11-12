@@ -151,6 +151,14 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    func ReadPostsDocs() {
+        
+    }
+    
+    func ReadProfilesDocs() {
+        
+    }
+    
     //MARK: Table View callbacks
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -241,6 +249,22 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
                 destination?.currentUser = currentUser
                 
             }
+            
+        }
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            
+            print("Selected index: \(indexPath.description)")
+            
+            let roomToSend = sortedRooms[indexPath.row]
+            
+            print("\(roomToSend.name) before segue")
+            
+            if let destination = segue.destination as? TabbedViewController {
+                print("\(roomToSend.name) in segue")
+                destination.selectedRoom = roomToSend
+            }
+            
             
         }
         
