@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddRoomViewController: UIViewController, UITextFieldDelegate {
     
@@ -171,7 +172,7 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             
-            SaveRoomData()
+            SaveRoomData(name: nameTF.text!, roomID: idTF.text!, creator: currentUser.fullNameLF, password: passwordTF.text!)
             
             let saveAlert = UIAlertController(title: "New Room!", message: "\(currentUser.fullNameFL) created new room \(nameTF.text!)!", preferredStyle: .alert)
             
@@ -187,10 +188,24 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func SaveRoomData() {
+    func SaveRoomData(name: String, roomID: String, creator: String, password: String) {
         
-        print("\(currentUser.fullNameLF) in Add Room")
+        //set database
+        let database = Firestore.firestore()
         
+        //add document to collection
+        database.collection("Rooms").addDocument(data: ["creator": creator, "name": name, "password": password, "roomID": roomID]) { (error) in
+            //Check for erros
+            
+            if error == nil {
+                //would be no erros
+            }
+            else {
+                //deal with possible errors
+            }
+            
+            
+        }
         
     }
     
