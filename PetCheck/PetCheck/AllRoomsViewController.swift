@@ -198,7 +198,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //set searchbar
         searchController.searchBar.delegate = self
-        searchController.searchBar.scopeButtonTitles = ["All", "Room Name", "Creator", "My Rooms"]
+        searchController.searchBar.scopeButtonTitles = ["Room Names", "Creators", "My Rooms"]
         
         //set to navigation
         navigationItem.searchController = searchController
