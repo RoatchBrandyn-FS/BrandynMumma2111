@@ -34,6 +34,7 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Variables
+    var currentUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,17 +171,32 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate {
         }
         else {
             
-            print("Room Should Save")
+            SaveRoomData()
             
-            navigationController?.popViewController(animated: true)
+            let saveAlert = UIAlertController(title: "New Room!", message: "\(currentUser.fullNameFL) created new room \(nameTF.text!)!", preferredStyle: .alert)
+            
+            saveAlert.addAction(UIAlertAction(title: "Back to Rooms Lobby", style: .default, handler: {_ in
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            }))
+            
+            present(saveAlert, animated: true, completion: nil)
             
         }
         
     }
     
+    func SaveRoomData() {
+        
+        print("\(currentUser.fullNameLF) in Add Room")
+        
+        
+    }
+    
 
     /*
-    // MARK: - Navigation
+    //MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

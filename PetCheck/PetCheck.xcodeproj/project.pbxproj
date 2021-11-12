@@ -72,16 +72,16 @@
 			children = (
 				5D7905EB2734F54B0001C5F4 /* AppDelegate.swift */,
 				5D7905ED2734F54B0001C5F4 /* SceneDelegate.swift */,
-				5D7905EF2734F54B0001C5F4 /* LoginViewController.swift */,
 				5D7905F12734F54B0001C5F4 /* Main.storyboard */,
 				5D7905F42734F54D0001C5F4 /* Assets.xcassets */,
 				5D7905F62734F54D0001C5F4 /* LaunchScreen.storyboard */,
+				5DFA6BAC27350B1F003F9A0A /* User.swift */,
+				5DFA6BB727379756003F9A0A /* Room.swift */,
 				5D7905F92734F54D0001C5F4 /* Info.plist */,
 				5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */,
-				5DFA6BAC27350B1F003F9A0A /* User.swift */,
+				5D7905EF2734F54B0001C5F4 /* LoginViewController.swift */,
 				5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */,
 				5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */,
-				5DFA6BB727379756003F9A0A /* Room.swift */,
 				5DC063E4273DE70C00FACAB6 /* AddRoomViewController.swift */,
 			);
 			path = PetCheck;

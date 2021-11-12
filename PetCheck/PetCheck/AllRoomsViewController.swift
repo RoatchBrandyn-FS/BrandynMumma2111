@@ -39,7 +39,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationItem.title = "Room Search"
+        navigationItem.title = "Rooms Lobby"
         navigationItem.hidesBackButton = true
         tableView.layer.cornerRadius = 20
         
@@ -224,14 +224,27 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if let s = sender as? UIBarButtonItem {
+            
+            if s.title == "Add Room" {
+                
+                let destination = segue.destination as? AddRoomViewController
+                
+                destination?.currentUser = currentUser
+                
+            }
+            
+        }
+        
     }
-    */
+    
 
 }

@@ -97,9 +97,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 
                 let saveAlert = UIAlertController(title: "New User Registered!", message: "User registration successful for \(firstNameTF.text!) and ready to login!", preferredStyle: .alert)
                 
-                saveAlert.addAction(UIAlertAction(title: "Back to Login", style: .default, handler: nil))
+                saveAlert.addAction(UIAlertAction(title: "Back to Login", style: .default, handler: {_ in
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    
+                }))
                 
-                navigationController?.popToRootViewController(animated: true)
+                present(saveAlert, animated: true, completion: nil)
                 
             }
             
