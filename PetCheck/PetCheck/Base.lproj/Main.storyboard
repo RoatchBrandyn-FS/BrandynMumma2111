@@ -176,9 +176,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Ofj-zR-ckC" kind="show" identifier="SelectRoomToTabbed" id="9nF-OX-OIT"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -206,6 +203,7 @@
                         <outlet property="logoutBarBtn" destination="MPq-hS-cd2" id="eLH-TK-qsF"/>
                         <outlet property="myRoomsBarBtn" destination="DOb-iM-1wX" id="IZF-gY-0sG"/>
                         <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
+                        <segue destination="Ofj-zR-ckC" kind="show" identifier="SelectRoomToTabbed" id="sg4-bf-MSe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omN-H1-lak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

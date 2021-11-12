@@ -193,6 +193,14 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         return 60
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let roomToSend = sortedRooms[indexPath.row]
+        
+        CheckCredentials(roomID: roomToSend.roomID, roomPassword: roomToSend.password, creator: roomToSend.creator, roomName: roomToSend.name)
+        
+    }
+    
     //MARK: Searchbar setup and Callbacks
     
     func SearchSetup() {
@@ -267,6 +275,54 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             
             
         }
+        
+    }
+    
+    func CheckCredentials(roomID: String, roomPassword: String, creator: String, roomName: String) {
+        
+        //alert needs 2 buttons, and two text fields for roomID and password
+        let roomAlert = UIAlertController(title: "Sign Into \(creator)'s Room: \(roomName)", message: "Please input the roomID and the Password for \(roomName)", preferredStyle: .alert)
+        
+        roomAlert.addTextField { (field) in
+            field.placeholder = "Enter RoomID..."
+            field.returnKeyType = .next
+        }
+        roomAlert.addTextField { (field) in
+            field.placeholder = "Enter Password..."
+            field.returnKeyType = .continue
+        }
+        
+        roomAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        roomAlert.addAction(UIAlertAction(title: "Open Room", style: .default, handler:{_ in
+            //read text fields and match to values in roomToSend
+            guard let fields = roomAlert.textFields, fields.count == 2 else {
+                return
+            }
+            let idTF = fields[0]
+            let passwordTF = fields[1]
+            
+            guard let id = idTF.text, !id.isEmpty, let password = passwordTF.text, !password.isEmpty
+            else { return }
+            
+            print("roomID: \(id)")
+            print("room password: \(password)")
+            
+            if roomID != id || roomPassword != password {
+                
+                let roomStatusAlert = UIAlertController(title: "Sorry...", message: "Either the RoomID or Password didn't match.", preferredStyle: .alert)
+                roomStatusAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(roomStatusAlert, animated: true, completion: nil)
+            }
+            else {
+                
+                self.performSegue(withIdentifier: "SelectRoomToTabbed", sender: self.tableView.indexPathForSelectedRow)
+            }
+            
+        }))
+        
+        present(roomAlert, animated: true, completion: nil)
+        
         
     }
     

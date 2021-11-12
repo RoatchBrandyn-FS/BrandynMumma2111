@@ -12,14 +12,28 @@ class TabbedViewController: UIViewController {
     //MARK: Outlets
     
     //MARK: Variables
+    
     //room
     var selectedRoom: Room!
+    
+    //bools
+    var roomConfirmed = false
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        SetRoomDetails()
+    }
+    //MARK: Actions
+    
+    //MARK: Objects
+    
+    //MARK: Methods
+    
+    func SetRoomDetails() {
         
         print("\(selectedRoom.name) in Tabbed Room")
         
@@ -30,16 +44,7 @@ class TabbedViewController: UIViewController {
             navigationItem.title = "Room: Not Loaded"
         }
         
-        
     }
-    
-    //MARK: Actions
-    
-    //MARK: Objects
-    
-    //MARK: Methods
-    
-    
     
 
     /*
