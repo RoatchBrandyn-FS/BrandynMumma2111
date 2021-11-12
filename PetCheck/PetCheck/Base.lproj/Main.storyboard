@@ -245,6 +245,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shb-2G-uKw">
                                                 <rect key="frame" x="179" y="42" width="46" height="30"/>
                                                 <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <action selector="createBtnTapped:" destination="vaC-M1-gPK" eventType="touchUpInside" id="aW1-Jg-o7a"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.27058823529999998" green="0.69803921570000005" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -274,35 +277,35 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Shouldn't Match Room Name)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-PC-4fF">
-                                                <rect key="frame" x="40.5" y="109" width="323" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <rect key="frame" x="40.5" y="109" width="323" height="18"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter RoomID..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLC-5r-Ms6">
-                                                <rect key="frame" x="40.5" y="132.5" width="323" height="34"/>
+                                                <rect key="frame" x="40.5" y="130" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhB-p5-4cd">
-                                                <rect key="frame" x="40.5" y="174.5" width="323" height="24"/>
+                                                <rect key="frame" x="40.5" y="172" width="323" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uAS-ME-9lb">
-                                                <rect key="frame" x="40.5" y="201.5" width="323" height="34"/>
+                                                <rect key="frame" x="40.5" y="199" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRC-jY-5rL">
-                                                <rect key="frame" x="40.5" y="243.5" width="323" height="24"/>
+                                                <rect key="frame" x="40.5" y="241" width="323" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter Passwrod..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-8l-6CW">
-                                                <rect key="frame" x="40.5" y="270.5" width="323" height="34"/>
+                                                <rect key="frame" x="40.5" y="268" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -368,10 +371,16 @@
                     <navigationItem key="navigationItem" id="ovp-zY-a5d"/>
                     <connections>
                         <outlet property="btnView" destination="tyi-m4-XXQ" id="r17-Hy-eTF"/>
+                        <outlet property="confirmLabel" destination="tRC-jY-5rL" id="P9o-Sn-bfr"/>
                         <outlet property="confirmTF" destination="nXH-8l-6CW" id="Fei-of-HSM"/>
+                        <outlet property="createBtn" destination="shb-2G-uKw" id="1h9-UM-fu6"/>
+                        <outlet property="idLabel" destination="3yQ-UU-Lx9" id="6i1-21-hFD"/>
                         <outlet property="idTF" destination="VLC-5r-Ms6" id="wPx-f6-uB4"/>
+                        <outlet property="idWarningLabel" destination="q6M-PC-4fF" id="FOy-N8-KJc"/>
                         <outlet property="labelView" destination="Obf-TF-ABT" id="ut0-Vx-sE6"/>
+                        <outlet property="nameLabel" destination="gUE-Rc-B4U" id="BnS-Gc-oci"/>
                         <outlet property="nameTF" destination="qrQ-ao-Ekd" id="SM3-nU-5nQ"/>
+                        <outlet property="passwordLabel" destination="VhB-p5-4cd" id="O05-aA-yOn"/>
                         <outlet property="passwordTF" destination="uAS-ME-9lb" id="ALM-rH-GRr"/>
                         <outlet property="tfView" destination="ecC-UO-8gB" id="bkF-Il-287"/>
                         <outlet property="viewContainer" destination="rLl-LG-SvS" id="1lg-3H-23N"/>
