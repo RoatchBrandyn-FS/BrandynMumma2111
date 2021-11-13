@@ -14,7 +14,9 @@
 		5D7905F52734F54D0001C5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7905F42734F54D0001C5F4 /* Assets.xcassets */; };
 		5D7905F82734F54D0001C5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D7905F62734F54D0001C5F4 /* LaunchScreen.storyboard */; };
 		5DC063E5273DE70C00FACAB6 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063E4273DE70C00FACAB6 /* AddRoomViewController.swift */; };
-		5DC063E9273E61F100FACAB6 /* TabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063E8273E61F100FACAB6 /* TabbedViewController.swift */; };
+		5DC063E9273E61F100FACAB6 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063E8273E61F100FACAB6 /* PostsViewController.swift */; };
+		5DC063EC273F22C500FACAB6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063EB273F22C500FACAB6 /* TabBarController.swift */; };
+		5DC063F0273F474300FACAB6 /* PetProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063EF273F474300FACAB6 /* PetProfilesViewController.swift */; };
 		5DFA6BA62734FA9D003F9A0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */; };
 		5DFA6BAA2734FBF0003F9A0A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DFA6BA92734FBF0003F9A0A /* FirebaseFirestore */; };
 		5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BAC27350B1F003F9A0A /* User.swift */; };
@@ -33,7 +35,9 @@
 		5D7905F72734F54D0001C5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D7905F92734F54D0001C5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC063E4273DE70C00FACAB6 /* AddRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
-		5DC063E8273E61F100FACAB6 /* TabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedViewController.swift; sourceTree = "<group>"; };
+		5DC063E8273E61F100FACAB6 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		5DC063EB273F22C500FACAB6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5DC063EF273F474300FACAB6 /* PetProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfilesViewController.swift; sourceTree = "<group>"; };
 		5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DFA6BAC27350B1F003F9A0A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +89,9 @@
 				5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */,
 				5DFA6BB4273636D1003F9A0A /* AllRoomsViewController.swift */,
 				5DC063E4273DE70C00FACAB6 /* AddRoomViewController.swift */,
-				5DC063E8273E61F100FACAB6 /* TabbedViewController.swift */,
+				5DC063EB273F22C500FACAB6 /* TabBarController.swift */,
+				5DC063E8273E61F100FACAB6 /* PostsViewController.swift */,
+				5DC063EF273F474300FACAB6 /* PetProfilesViewController.swift */,
 			);
 			path = PetCheck;
 			sourceTree = "<group>";
@@ -170,12 +176,14 @@
 				5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */,
 				5DFA6BB22735D372003F9A0A /* RegisterViewController.swift in Sources */,
 				5DFA6BB827379756003F9A0A /* Room.swift in Sources */,
+				5DC063EC273F22C500FACAB6 /* TabBarController.swift in Sources */,
 				5DC063E5273DE70C00FACAB6 /* AddRoomViewController.swift in Sources */,
 				5D7905F02734F54B0001C5F4 /* LoginViewController.swift in Sources */,
 				5D7905EC2734F54B0001C5F4 /* AppDelegate.swift in Sources */,
 				5D7905EE2734F54B0001C5F4 /* SceneDelegate.swift in Sources */,
 				5DFA6BB5273636D1003F9A0A /* AllRoomsViewController.swift in Sources */,
-				5DC063E9273E61F100FACAB6 /* TabbedViewController.swift in Sources */,
+				5DC063F0273F474300FACAB6 /* PetProfilesViewController.swift in Sources */,
+				5DC063E9273E61F100FACAB6 /* PostsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

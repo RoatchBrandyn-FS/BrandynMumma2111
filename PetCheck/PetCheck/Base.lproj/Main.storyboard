@@ -203,28 +203,63 @@
                         <outlet property="logoutBarBtn" destination="MPq-hS-cd2" id="eLH-TK-qsF"/>
                         <outlet property="myRoomsBarBtn" destination="DOb-iM-1wX" id="IZF-gY-0sG"/>
                         <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
-                        <segue destination="Ofj-zR-ckC" kind="show" identifier="SelectRoomToTabbed" id="sg4-bf-MSe"/>
+                        <segue destination="B3M-KQ-S43" kind="show" identifier="SelectRoomToTabbed" id="6qj-Nj-aEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omN-H1-lak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2223" y="80"/>
         </scene>
-        <!--Tabbed View Controller-->
-        <scene sceneID="be7-W5-Jmy">
+        <!--My Pets-->
+        <scene sceneID="rY1-QG-dve">
             <objects>
-                <viewController id="Ofj-zR-ckC" customClass="TabbedViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N1I-6k-VgC">
+                <viewController id="D2O-zg-hW0" customClass="PetProfilesViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1y0-QH-MXW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="shm-6m-TAZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="wbU-H7-ZM7"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="S1q-Xb-dmT"/>
+                    <tabBarItem key="tabBarItem" title="My Pets" image="heart.fill" catalog="system" id="igU-ta-Y4t"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eSo-fE-vma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Mf-cA-ldm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3339" y="80"/>
+            <point key="canvasLocation" x="4078" y="424"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="gI3-9g-lb7">
+            <objects>
+                <viewController id="zI9-VW-4Ao" customClass="PostsViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qW5-43-w9n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8YF-oy-X8o"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="Kn0-GK-DH9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QKJ-Ek-H5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4079" y="-234"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TZi-qY-gZL">
+            <objects>
+                <tabBarController id="B3M-KQ-S43" customClass="TabBarController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xu4-Ki-wfR"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3rM-Ge-Q4l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zI9-VW-4Ao" kind="relationship" relationship="viewControllers" id="Laq-2A-6IK"/>
+                        <segue destination="D2O-zg-hW0" kind="relationship" relationship="viewControllers" id="rYM-ZC-LFm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSy-bu-A7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3230" y="80"/>
         </scene>
         <!--Add Room View Controller-->
         <scene sceneID="3xP-PD-hJP">
@@ -619,6 +654,8 @@
     </scenes>
     <resources>
         <image name="PawLarge" width="272.07000732421875" height="251.94999694824219"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -632,8 +669,14 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
