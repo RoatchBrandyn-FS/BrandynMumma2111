@@ -36,6 +36,9 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         postsTV.delegate = self
         postsTV.dataSource = self
         
+        postsTV.layer.cornerRadius = 20
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +134,10 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = post.postString
         cell.detailTextLabel?.text = post.tStamp.description
         
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
+        cell.layer.cornerRadius = 20
+        
         return cell
     }
     
@@ -138,6 +145,18 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "All Pet Activities"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation
