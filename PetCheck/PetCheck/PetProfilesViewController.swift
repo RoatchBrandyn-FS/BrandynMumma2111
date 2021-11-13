@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -34,12 +35,18 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         let tabbar = tabBarController as! TabBarController
         selectedRoom = tabbar.selectedRoom
         
+        petProfilesTV.delegate = self
+        petProfilesTV.dataSource = self
+        petProfilesTV.layer.cornerRadius = 20
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        ReadPetProfiles()
         
     }
     
@@ -54,6 +61,86 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: Objects
     
     //MARK: Methods
+    
+    func ReadPetProfiles() {
+        
+        //clear lists
+        allPets.removeAll()
+        allCats.removeAll()
+        allDogs.removeAll()
+        allFishes.removeAll()
+        sortedPets.removeAll()
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //read documents for pet profiles
+        database.collection("PetProfiles").getDocuments { (snapshot, error) in
+            
+            if error == nil {
+                
+                //Get pet profiles and organize bsaed on selected room
+                DispatchQueue.main.async {
+                    
+                    snapshot?.documents.forEach({ (petProfile) in
+                        
+                        guard let creator = petProfile["creator"] as? String, let roomName = petProfile["roomName"] as? String
+                        else {return}
+                        
+                        if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
+                            
+                            guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let timeStamps = petProfile["tStamps"] as? [Timestamp]
+                            else{return}
+                            
+                            if timeStamps.count == 0 {
+                                
+                                self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities))
+                                
+                            }
+                            else{
+                                
+                                var tStamps = [Date]()
+                                for ts in timeStamps {
+                                    
+                                    tStamps.append(ts.dateValue())
+                                    
+                                }
+                                
+                                self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps))
+                                
+                            }
+                            
+                            
+                            
+                        }
+                        
+                    })
+                    
+                    for pet in self.allPets {
+                        switch pet.petType {
+                        case "Dog":
+                            self.allDogs.append(pet)
+                        case "Cat":
+                            self.allCats.append(pet)
+                        case "Fish":
+                            self.allFishes.append(pet)
+                        default:
+                            print("Error sorting pets")
+                        }
+                    }
+                    
+                    self.sortedPets = [self.allDogs, self.allCats, self.allFishes]
+                    self.petProfilesTV.reloadData()
+                    
+                }
+                
+            }
+            else {
+                print("Error occured loading firebase - All Pet Profiles load")
+            }
+        }
+        
+    }
     
     
     //MARK: Tableview callbacks
@@ -71,13 +158,30 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = petProfilesTV.dequeueReusableCell(withIdentifier: "pet_cell_01", for: indexPath)
         
         //cell configure
+        let pet = sortedPets[indexPath.section][indexPath.row]
         
+        cell.textLabel?.text = pet.petName
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let listSection = sortedPets[section]
+        
+        switch section {
+        case 0:
+            return "My Dogs: \(listSection.count.description)"
+        case 1:
+            return "My Cats: \(listSection.count.description)"
+        case 2:
+            return "My Fishes: \(listSection.count.description)"
+        default:
+            return "Error laoding header for pet profiles"
+        }
     }
     
     
