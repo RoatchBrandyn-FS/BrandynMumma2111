@@ -16,6 +16,7 @@ class TabBarController: UITabBarController {
     
     //room
     var selectedRoom: Room!
+    var currentUser: User!
     
     
 
@@ -82,7 +83,16 @@ class TabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
         if let s = sender as? UIBarButtonItem {
             
-            print("was the bar button item")
+            if selectedIndex == 0 {
+                let destination = segue.destination as? AddPostViewController
+                
+                destination?.selectedRoom = selectedRoom
+                destination?.currentUser = currentUser
+                
+            }
+            else if selectedIndex == 1 {
+                
+            }
             
         }
         

@@ -271,6 +271,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             if let destination = segue.destination as? TabBarController {
                 print("\(roomToSend.name) in segue")
                 destination.selectedRoom = roomToSend
+                destination.currentUser = currentUser
             }
             
             
