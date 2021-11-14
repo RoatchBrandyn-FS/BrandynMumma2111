@@ -162,6 +162,19 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.textLabel?.text = pet.petName
         
+        switch pet.petType {
+        
+        case "Dog":
+            cell.imageView?.image = UIImage.init(named: "dogIcon")
+        case "Cat":
+            cell.imageView?.image = UIImage.init(named: "catIcon")
+        case "Fish":
+            cell.imageView?.image = UIImage.init(named: "fishIcon")
+        default:
+            print("Error loading image - Pet Profile Cells")
+        
+        }
+        
         return cell
     }
     
@@ -184,16 +197,35 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    
+    
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if let indexPath = petProfilesTV.indexPathForSelectedRow {
+            print(indexPath)
+            
+            let petToSend = sortedPets[indexPath.section][indexPath.row]
+            
+            if let destination = segue.destination as? SinglePetViewController {
+                
+                destination.selectedPet = petToSend
+                
+            }
+            
+        }
+        
     }
-    */
-
+    
 }

@@ -8,13 +8,60 @@
 import UIKit
 
 class SinglePetViewController: UIViewController {
+    
+    //MARK: Outlets
+    
+    //text views
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var specificNeedsTextView: UITextView!
+    @IBOutlet weak var activitiesTextView: UITextView!
+    
+    //labels
+    @IBOutlet weak var typeLabel: UILabel!
+    
+    //images
+    @IBOutlet weak var petImage: UIImageView!
+    
+    //MARK: Variables
+    
+    //room
+    var selectedPet: PetProfile!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        navigationItem.title = "[Pet Name] Info:"
+        navigationItem.title = "\(selectedPet.petName) Info:"
+        
+        SetDetails()
+    }
+    
+    //MARK: Actions
+    
+    //MARK: Objects
+    
+    //MARK: Methods
+    
+    func SetDetails() {
+        
+        typeLabel.text = "Pet Type: \(selectedPet.petType)"
+        
+        descriptionTextView.text = selectedPet.description
+        specificNeedsTextView.text = selectedPet.specificNeeds
+        
+        switch selectedPet.petType {
+        case "Dog":
+            petImage.image = UIImage.init(named: "dogIcon")
+        case "Cat":
+            petImage.image = UIImage.init(named: "catIcon")
+        case "Fish":
+            petImage.image = UIImage.init(named: "fishIcon")
+        default:
+            print("Error loading image - Single Pet Info")
+        }
+        
     }
     
 
