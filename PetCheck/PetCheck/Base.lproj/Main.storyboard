@@ -238,6 +238,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4Wr-s7-14Q" kind="show" id="WoZ-Aq-Oll"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -258,7 +261,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mf-cA-ldm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4078" y="424"/>
+            <point key="canvasLocation" x="3917" y="856"/>
+        </scene>
+        <!--Single Pet View Controller-->
+        <scene sceneID="M4V-10-W5s">
+            <objects>
+                <viewController id="4Wr-s7-14Q" customClass="SinglePetViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AwO-R1-h52">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ubL-CR-fgM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hzj-8o-QmX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dj-Hd-G3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3916" y="1631"/>
+        </scene>
+        <!--Add Post View Controller-->
+        <scene sceneID="prE-EK-Zam">
+            <objects>
+                <viewController id="85X-Di-zeH" customClass="AddPostViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hgm-t0-MBF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MjQ-SN-uYZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GKz-R9-bp6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rfy-aE-lqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3993" y="-751"/>
         </scene>
         <!--Home-->
         <scene sceneID="gI3-9g-lb7">
@@ -316,26 +351,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKJ-Ek-H5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4079" y="-234"/>
+            <point key="canvasLocation" x="3162" y="856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TZi-qY-gZL">
             <objects>
                 <tabBarController id="B3M-KQ-S43" customClass="TabBarController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="xu4-Ki-wfR"/>
+                    <navigationItem key="navigationItem" id="xu4-Ki-wfR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Wu0-Sg-Deo">
+                            <connections>
+                                <action selector="plusTapped:" destination="B3M-KQ-S43" id="vYG-Yf-Wur"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3rM-Ge-Q4l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="plusBarBtn" destination="Wu0-Sg-Deo" id="RSC-Sd-wM9"/>
                         <segue destination="zI9-VW-4Ao" kind="relationship" relationship="viewControllers" id="Laq-2A-6IK"/>
                         <segue destination="D2O-zg-hW0" kind="relationship" relationship="viewControllers" id="rYM-ZC-LFm"/>
+                        <segue destination="85X-Di-zeH" kind="show" identifier="TabToAddPost" id="6fi-at-2sE"/>
+                        <segue destination="fxx-fw-PWC" kind="show" identifier="TabToAddPet" id="xM8-pL-wHi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSy-bu-A7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3230" y="80"/>
+        </scene>
+        <!--Add Pet View Controller-->
+        <scene sceneID="wGg-YE-o0P">
+            <objects>
+                <viewController id="fxx-fw-PWC" customClass="AddPetViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Tc-ZI-ZAC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Zc3-bj-wfp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FK1-U8-aQN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rb6-WB-HTK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4741" y="-751"/>
         </scene>
         <!--Add Room View Controller-->
         <scene sceneID="3xP-PD-hJP">

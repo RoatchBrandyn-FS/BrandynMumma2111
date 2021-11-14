@@ -9,6 +9,9 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+    //MARK: Outlets
+    @IBOutlet weak var plusBarBtn: UIBarButtonItem!
+    
     //MARK: Variables
     
     //room
@@ -27,6 +30,24 @@ class TabBarController: UITabBarController {
         
     }
     
+    //MARK: Actions
+    @IBAction func plusTapped(_ sender: Any) {
+        
+        print("Current Tab: \(selectedIndex)")
+        
+        if selectedIndex == 0 {
+            performSegue(withIdentifier: "TabToAddPost", sender: sender)
+        }
+        else if selectedIndex == 1 {
+            performSegue(withIdentifier: "TabToAddPet", sender: sender)
+        }
+        
+    }
+    
+    //MARK: Objects
+    
+    //MARK: Methods
+    
     func SetRoomDetails() {
         
         //print("\(selectedRoom.name) in Tabbed Room")
@@ -37,6 +58,8 @@ class TabBarController: UITabBarController {
         else {
             navigationItem.title = "Room: Not Loaded"
         }
+        
+        navigationItem.hidesBackButton = true
         
     }
     
@@ -57,11 +80,10 @@ class TabBarController: UITabBarController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if selectedIndex == 0 {
-            print("Index was 0")
-        }
-        else if selectedIndex == 1 {
-            print("Index was 1")
+        if let s = sender as? UIBarButtonItem {
+            
+            print("was the bar button item")
+            
         }
         
         
