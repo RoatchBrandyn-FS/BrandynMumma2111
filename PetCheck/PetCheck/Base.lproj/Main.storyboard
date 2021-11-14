@@ -656,10 +656,175 @@
                     <view key="view" contentMode="scaleToFill" id="5Tc-ZI-ZAC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MjG-ag-zgu" userLabel="viewContainerView">
+                                <rect key="frame" x="5" y="93" width="404" height="764"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COx-wl-UKl" userLabel="labelView">
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="153"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Fill In All Fields and Pick Items that best Fit Your New Addition:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DwX-Nl-eiK">
+                                                <rect key="frame" x="20" y="23" width="364" height="107"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstItem="DwX-Nl-eiK" firstAttribute="height" secondItem="COx-wl-UKl" secondAttribute="height" multiplier="0.7" id="4x8-0Z-0XD"/>
+                                            <constraint firstItem="DwX-Nl-eiK" firstAttribute="width" secondItem="COx-wl-UKl" secondAttribute="width" multiplier="0.9" id="6gd-OI-A8i"/>
+                                            <constraint firstItem="DwX-Nl-eiK" firstAttribute="centerX" secondItem="COx-wl-UKl" secondAttribute="centerX" id="GIT-jN-Idz"/>
+                                            <constraint firstItem="DwX-Nl-eiK" firstAttribute="centerY" secondItem="COx-wl-UKl" secondAttribute="centerY" id="fN7-vj-Zyk"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-9z-3F1" userLabel="btnView">
+                                        <rect key="frame" x="0.0" y="687.5" width="404" height="76.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGs-vH-5fe">
+                                                <rect key="frame" x="157.5" y="23.5" width="89" height="30"/>
+                                                <state key="normal" title="Add New Pet"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="YGs-vH-5fe" firstAttribute="centerX" secondItem="Bp9-9z-3F1" secondAttribute="centerX" id="5u0-kb-rvr"/>
+                                            <constraint firstItem="YGs-vH-5fe" firstAttribute="centerY" secondItem="Bp9-9z-3F1" secondAttribute="centerY" id="E9Y-73-pEA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5a-qG-zv5" userLabel="tfView">
+                                        <rect key="frame" x="0.0" y="153" width="404" height="534.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBy-i5-IL6">
+                                                <rect key="frame" x="40.5" y="5" width="323" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3A-Bz-F1M">
+                                                <rect key="frame" x="40.5" y="77" width="323" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of Pet:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDw-DY-7ni">
+                                                <rect key="frame" x="40.5" y="217" width="323" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specific Needs For Pet:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7y-qj-3l4">
+                                                <rect key="frame" x="40.5" y="284" width="323" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Pet Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4UK-6g-T5n">
+                                                <rect key="frame" x="40.5" y="35" width="323" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Pet Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-Go-eHo">
+                                                <rect key="frame" x="40.5" y="242" width="323" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Pet Specific Needs..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZr-Vn-VRa">
+                                                <rect key="frame" x="40.5" y="309" width="323" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8NM-fO-Hgi">
+                                                <rect key="frame" x="40.5" y="102" width="323" height="107"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </pickerView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Should give a list of activities to help with Specific Needs." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZSI-pu-YcL">
+                                                <rect key="frame" x="40.5" y="376" width="323" height="153.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities To Base Needs On:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MU-oJ-6rf">
+                                                <rect key="frame" x="40.5" y="351" width="323" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstItem="8NM-fO-Hgi" firstAttribute="centerX" secondItem="A5a-qG-zv5" secondAttribute="centerX" id="3p1-8j-bIf"/>
+                                            <constraint firstItem="kZr-Vn-VRa" firstAttribute="top" secondItem="J7y-qj-3l4" secondAttribute="bottom" constant="3" id="40m-0b-GtA"/>
+                                            <constraint firstItem="ZSI-pu-YcL" firstAttribute="top" secondItem="4MU-oJ-6rf" secondAttribute="bottom" constant="3" id="92N-8x-nF8"/>
+                                            <constraint firstItem="ZSI-pu-YcL" firstAttribute="width" secondItem="4MU-oJ-6rf" secondAttribute="width" id="9SW-ki-2nw"/>
+                                            <constraint firstItem="UDA-Go-eHo" firstAttribute="width" secondItem="UDw-DY-7ni" secondAttribute="width" id="9T7-pB-sWW"/>
+                                            <constraint firstItem="4UK-6g-T5n" firstAttribute="top" secondItem="NBy-i5-IL6" secondAttribute="bottom" constant="8" symbolic="YES" id="Dnp-Ak-vG3"/>
+                                            <constraint firstItem="4UK-6g-T5n" firstAttribute="centerX" secondItem="NBy-i5-IL6" secondAttribute="centerX" id="FPM-76-xFH"/>
+                                            <constraint firstItem="J7y-qj-3l4" firstAttribute="centerX" secondItem="UDA-Go-eHo" secondAttribute="centerX" id="Iec-U6-Kxi"/>
+                                            <constraint firstItem="UDw-DY-7ni" firstAttribute="top" secondItem="8NM-fO-Hgi" secondAttribute="bottom" constant="8" id="KIa-eM-Rfz"/>
+                                            <constraint firstItem="F3A-Bz-F1M" firstAttribute="centerX" secondItem="4UK-6g-T5n" secondAttribute="centerX" id="Kql-6k-ycN"/>
+                                            <constraint firstItem="F3A-Bz-F1M" firstAttribute="top" secondItem="4UK-6g-T5n" secondAttribute="bottom" constant="8" symbolic="YES" id="KrM-Wb-WPn"/>
+                                            <constraint firstItem="8NM-fO-Hgi" firstAttribute="top" secondItem="F3A-Bz-F1M" secondAttribute="bottom" constant="3" id="QPG-9T-lno"/>
+                                            <constraint firstItem="kZr-Vn-VRa" firstAttribute="centerX" secondItem="J7y-qj-3l4" secondAttribute="centerX" id="Rto-gF-430"/>
+                                            <constraint firstItem="4MU-oJ-6rf" firstAttribute="top" secondItem="kZr-Vn-VRa" secondAttribute="bottom" constant="8" id="U3t-oV-PMt"/>
+                                            <constraint firstItem="8NM-fO-Hgi" firstAttribute="height" secondItem="A5a-qG-zv5" secondAttribute="height" multiplier="0.2" id="UA2-Ho-qPE"/>
+                                            <constraint firstItem="ZSI-pu-YcL" firstAttribute="centerX" secondItem="A5a-qG-zv5" secondAttribute="centerX" id="UNU-gH-AAm"/>
+                                            <constraint firstItem="8NM-fO-Hgi" firstAttribute="width" secondItem="F3A-Bz-F1M" secondAttribute="width" id="WRH-cO-4WE"/>
+                                            <constraint firstItem="UDA-Go-eHo" firstAttribute="top" secondItem="UDw-DY-7ni" secondAttribute="bottom" constant="3" id="YuV-E8-vXj"/>
+                                            <constraint firstItem="J7y-qj-3l4" firstAttribute="width" secondItem="UDA-Go-eHo" secondAttribute="width" id="Z4A-3i-WQ8"/>
+                                            <constraint firstItem="kZr-Vn-VRa" firstAttribute="width" secondItem="J7y-qj-3l4" secondAttribute="width" id="ZtF-ag-Wiv"/>
+                                            <constraint firstItem="4MU-oJ-6rf" firstAttribute="width" secondItem="kZr-Vn-VRa" secondAttribute="width" id="akP-dw-wdp"/>
+                                            <constraint firstItem="UDw-DY-7ni" firstAttribute="centerX" secondItem="A5a-qG-zv5" secondAttribute="centerX" id="cEQ-Jg-565"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZSI-pu-YcL" secondAttribute="bottom" constant="5" id="fXy-4X-456"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZSI-pu-YcL" secondAttribute="bottom" constant="5" id="hfI-ca-DvG"/>
+                                            <constraint firstItem="4MU-oJ-6rf" firstAttribute="centerX" secondItem="kZr-Vn-VRa" secondAttribute="centerX" id="in9-g3-cmF"/>
+                                            <constraint firstItem="F3A-Bz-F1M" firstAttribute="width" secondItem="4UK-6g-T5n" secondAttribute="width" id="lEI-Oh-BVy"/>
+                                            <constraint firstItem="NBy-i5-IL6" firstAttribute="centerX" secondItem="A5a-qG-zv5" secondAttribute="centerX" id="n1u-tc-1iK"/>
+                                            <constraint firstItem="UDw-DY-7ni" firstAttribute="width" secondItem="8NM-fO-Hgi" secondAttribute="width" id="qnH-oL-mLf"/>
+                                            <constraint firstItem="J7y-qj-3l4" firstAttribute="top" secondItem="UDA-Go-eHo" secondAttribute="bottom" constant="8" id="tEz-IC-726"/>
+                                            <constraint firstItem="NBy-i5-IL6" firstAttribute="width" secondItem="A5a-qG-zv5" secondAttribute="width" multiplier="0.8" id="ttE-3b-ce0"/>
+                                            <constraint firstItem="NBy-i5-IL6" firstAttribute="top" secondItem="A5a-qG-zv5" secondAttribute="top" constant="5" id="uBA-ha-sF5"/>
+                                            <constraint firstItem="4UK-6g-T5n" firstAttribute="width" secondItem="NBy-i5-IL6" secondAttribute="width" id="uFT-Ja-4aP"/>
+                                            <constraint firstItem="UDA-Go-eHo" firstAttribute="centerX" secondItem="UDw-DY-7ni" secondAttribute="centerX" id="wMj-L6-Vud"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstItem="COx-wl-UKl" firstAttribute="height" secondItem="MjG-ag-zgu" secondAttribute="height" multiplier="0.2" id="6ie-vb-dBg"/>
+                                    <constraint firstAttribute="trailing" secondItem="COx-wl-UKl" secondAttribute="trailing" id="GIa-G0-0Nl"/>
+                                    <constraint firstItem="A5a-qG-zv5" firstAttribute="leading" secondItem="MjG-ag-zgu" secondAttribute="leading" id="S7n-Bf-nsV"/>
+                                    <constraint firstItem="A5a-qG-zv5" firstAttribute="top" secondItem="COx-wl-UKl" secondAttribute="bottom" id="WKp-v0-AEr"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bp9-9z-3F1" secondAttribute="trailing" id="Wlw-Ym-6e4"/>
+                                    <constraint firstItem="Bp9-9z-3F1" firstAttribute="top" secondItem="A5a-qG-zv5" secondAttribute="bottom" id="XTu-Rz-jdg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bp9-9z-3F1" secondAttribute="bottom" id="gij-xd-mvo"/>
+                                    <constraint firstItem="Bp9-9z-3F1" firstAttribute="height" secondItem="MjG-ag-zgu" secondAttribute="height" multiplier="0.1" id="hgF-A7-nUa"/>
+                                    <constraint firstItem="COx-wl-UKl" firstAttribute="leading" secondItem="MjG-ag-zgu" secondAttribute="leading" id="ksf-4k-CNv"/>
+                                    <constraint firstItem="Bp9-9z-3F1" firstAttribute="leading" secondItem="MjG-ag-zgu" secondAttribute="leading" id="nYg-Mu-Rnr"/>
+                                    <constraint firstItem="COx-wl-UKl" firstAttribute="top" secondItem="MjG-ag-zgu" secondAttribute="top" id="tjJ-jn-3WQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="A5a-qG-zv5" secondAttribute="trailing" id="vCM-BC-IPP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Zc3-bj-wfp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MjG-ag-zgu" firstAttribute="top" secondItem="Zc3-bj-wfp" secondAttribute="top" constant="5" id="27K-jc-MV9"/>
+                            <constraint firstItem="Zc3-bj-wfp" firstAttribute="bottom" secondItem="MjG-ag-zgu" secondAttribute="bottom" constant="5" id="cBm-74-jri"/>
+                            <constraint firstItem="MjG-ag-zgu" firstAttribute="leading" secondItem="Zc3-bj-wfp" secondAttribute="leading" constant="5" id="dSd-Pc-i9m"/>
+                            <constraint firstItem="Zc3-bj-wfp" firstAttribute="trailing" secondItem="MjG-ag-zgu" secondAttribute="trailing" constant="5" id="lLw-np-15m"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FK1-U8-aQN"/>
+                    <connections>
+                        <outlet property="activitiesTextView" destination="ZSI-pu-YcL" id="d0g-SR-ca1"/>
+                        <outlet property="petDescriptionTF" destination="UDA-Go-eHo" id="hvh-gB-3hn"/>
+                        <outlet property="petNameTF" destination="4UK-6g-T5n" id="1mU-f4-FbU"/>
+                        <outlet property="petSpecificNeedsTF" destination="kZr-Vn-VRa" id="tKp-N9-1nm"/>
+                        <outlet property="petTypePicker" destination="8NM-fO-Hgi" id="3NU-eW-gLz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rb6-WB-HTK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
