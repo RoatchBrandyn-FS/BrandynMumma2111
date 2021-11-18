@@ -22,6 +22,9 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     //text view
     @IBOutlet weak var activitiesTextView: UITextView!
     
+    //buttons
+    @IBOutlet weak var addPet: UIButton!
+    
     
     //MARK: Variables
     
@@ -55,10 +58,28 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     //MARK: Actions
+    @IBAction func editingChangedTF(_ sender: UITextField) {
+        
+        CheckTF()
+        
+    }
     
     //MARK: Objects
     
     //MARK: Methods
+    
+    func CheckTF() {
+        
+        if petNameTF.text?.isEmpty == true || petDescriptionTF.text?.isEmpty == true || petSpecificNeedsTF.text?.isEmpty == true {
+            
+            addPet.isEnabled = false
+        }
+        else {
+            
+            addPet.isEnabled = true
+        }
+        
+    }
     
     //MARK: Picker View Callbacks
     

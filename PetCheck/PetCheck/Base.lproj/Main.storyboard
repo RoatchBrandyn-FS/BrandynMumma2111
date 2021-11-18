@@ -477,7 +477,7 @@
                                         <rect key="frame" x="0.0" y="191" width="404" height="458.5"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUG-Ys-OJ4">
-                                                <rect key="frame" x="0.0" y="31" width="404" height="183"/>
+                                                <rect key="frame" x="0.0" y="31" width="404" height="183.5"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwz-D8-JBx">
@@ -682,7 +682,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-9z-3F1" userLabel="btnView">
                                         <rect key="frame" x="0.0" y="687.5" width="404" height="76.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGs-vH-5fe">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGs-vH-5fe">
                                                 <rect key="frame" x="157.5" y="23.5" width="89" height="30"/>
                                                 <state key="normal" title="Add New Pet"/>
                                             </button>
@@ -724,16 +724,25 @@
                                                 <rect key="frame" x="40.5" y="35" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingChangedTF:" destination="fxx-fw-PWC" eventType="editingChanged" id="Cty-UP-2za"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Pet Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-Go-eHo">
                                                 <rect key="frame" x="40.5" y="242" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingChangedTF:" destination="fxx-fw-PWC" eventType="editingDidEnd" id="XNH-07-d1s"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Pet Specific Needs..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZr-Vn-VRa">
                                                 <rect key="frame" x="40.5" y="309" width="323" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingChangedTF:" destination="fxx-fw-PWC" eventType="editingDidEnd" id="E3C-6a-4t3"/>
+                                                </connections>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8NM-fO-Hgi">
                                                 <rect key="frame" x="40.5" y="102" width="323" height="107"/>
@@ -820,6 +829,7 @@
                     <navigationItem key="navigationItem" id="FK1-U8-aQN"/>
                     <connections>
                         <outlet property="activitiesTextView" destination="ZSI-pu-YcL" id="d0g-SR-ca1"/>
+                        <outlet property="addPet" destination="YGs-vH-5fe" id="Pio-TZ-wzh"/>
                         <outlet property="petDescriptionTF" destination="UDA-Go-eHo" id="hvh-gB-3hn"/>
                         <outlet property="petNameTF" destination="4UK-6g-T5n" id="1mU-f4-FbU"/>
                         <outlet property="petSpecificNeedsTF" destination="kZr-Vn-VRa" id="tKp-N9-1nm"/>
