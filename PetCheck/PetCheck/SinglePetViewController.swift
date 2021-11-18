@@ -51,6 +51,24 @@ class SinglePetViewController: UIViewController {
         descriptionTextView.text = selectedPet.description
         specificNeedsTextView.text = selectedPet.specificNeeds
         
+        var activityString = ""
+        
+        for activity in selectedPet.activities {
+            
+            let activityIndex = selectedPet.activities.firstIndex(of: activity)!
+            
+            if activityIndex == 0 {
+                
+                activityString.append("\(activity): \nLast Done: \(selectedPet.tStamps[activityIndex])\n")
+            }
+            else {
+                
+                activityString.append("\n\(activity): \nLast Done: \(selectedPet.tStamps[activityIndex])\n")
+            }
+        }
+        
+        activitiesTextView.text = activityString
+        
         switch selectedPet.petType {
         case "Dog":
             petImage.image = UIImage.init(named: "dogIcon")
