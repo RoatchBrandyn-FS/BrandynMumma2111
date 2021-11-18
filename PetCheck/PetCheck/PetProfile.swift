@@ -15,12 +15,12 @@ class PetProfile {
     var description: String
     var specificNeeds: String
     var activities: [String]
-    var tStamps: [Date]
+    var tStamps: [String]
     
     //Computed Properties
     
     //inits
-    init(petName: String, petType: String, description: String, specificNeeds: String, activities: [String], tStamps: [Date] = [Date]()){
+    init(petName: String, petType: String, description: String, specificNeeds: String, activities: [String], tStamps: [String] = [String]()){
         
         self.petName = petName
         self.petType = petType

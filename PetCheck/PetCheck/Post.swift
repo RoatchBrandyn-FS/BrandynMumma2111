@@ -12,7 +12,7 @@ class Post {
     //Stored Properties
     var activity: String
     var petName: String
-    var tStamp: Date
+    var tStamp: String
     var user: String
     
     var creator: String
@@ -24,7 +24,7 @@ class Post {
     }
     
     //Inits
-    init(activity: String, petName: String, tStamp: Date, user: String, creator: String, roomName: String) {
+    init(activity: String, petName: String, tStamp: String, user: String, creator: String, roomName: String) {
         
         self.activity = activity
         self.petName = petName

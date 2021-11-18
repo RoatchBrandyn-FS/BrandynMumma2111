@@ -86,10 +86,8 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
                             
-                            guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let timeStamp = post["tStamp"] as? Timestamp, let user = post["user"] as? String
+                            guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let tStamp = post["tStamp"] as? String, let user = post["user"] as? String
                             else {return}
-                            
-                            let tStamp = timeStamp.dateValue()
                             
                             self.allRoomPosts.append(Post(activity: activity, petName: petName, tStamp: tStamp, user: user, creator: creator, roomName: roomName))
                             

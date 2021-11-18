@@ -26,6 +26,7 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
     
     //room
     var selectedRoom: Room!
+    var currentUser: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         
         let tabbar = tabBarController as! TabBarController
         selectedRoom = tabbar.selectedRoom
+        currentUser = tabbar.currentUser
         
         petProfilesTV.delegate = self
         petProfilesTV.dataSource = self
@@ -89,27 +91,10 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
                         
                         if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
                             
-                            guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let timeStamps = petProfile["tStamps"] as? [Timestamp]
+                            guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let tStamps = petProfile["tStamps"] as? [String]
                             else{return}
                             
-                            if timeStamps.count == 0 {
-                                
-                                self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities))
-                                
-                            }
-                            else{
-                                
-                                var tStamps = [Date]()
-                                for ts in timeStamps {
-                                    
-                                    tStamps.append(ts.dateValue())
-                                    
-                                }
-                                
-                                self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps))
-                                
-                            }
-                            
+                            self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps))
                             
                             
                         }
@@ -223,6 +208,13 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
                 destination.selectedPet = petToSend
                 
             }
+            
+        }
+        
+        else if let destination = segue.destination as? AddPetViewController {
+            
+            destination.currentUser = currentUser
+            destination.selectedRoom = selectedRoom
             
         }
         

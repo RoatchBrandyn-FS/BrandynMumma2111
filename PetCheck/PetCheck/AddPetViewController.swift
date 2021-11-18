@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -33,6 +34,12 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var dogActivities = ["Fed", "Walked", "Took Potty"]
     var catActivities = ["Fed", "Cleaned Litter Box"]
     var fishActivities = ["Fed", "Cleaned Bowl"]
+    var tStamps = [Date]()
+    
+    //user and room
+    var selectedRoom: Room!
+    var currentUser: User!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +85,36 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
             addPet.isEnabled = true
         }
+        
+    }
+    
+    func SavePetProfileData(petName: String, petType: String, description: String, specificNeeds: String) {
+        
+        //set reamining variables not coming into func
+        var activities = [String]()
+        let timeNow = NSDate.now
+        
+        switch petType {
+        case "Dog":
+            activities = dogActivities
+            tStamps.append(timeNow)
+            
+        case "Cat":
+            activities = catActivities
+        case "Fish":
+            activities = fishActivities
+        default:
+            print("Issue setting activities - Add Pet View")
+            
+        }
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //add document to collection
+        database.collection("PetProfiles").addDocument(data: ["activities": activities, "creator": selectedRoom.creator, "description": description, "petName": petName, "petType": petType, "roomName": selectedRoom.name, "specificNeeds": specificNeeds, "tStamps": tStamps])
+        
+        
         
     }
     
