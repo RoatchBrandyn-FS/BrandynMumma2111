@@ -465,6 +465,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhm-nz-lb0">
                                                 <rect key="frame" x="186.5" y="42" width="31" height="30"/>
                                                 <state key="normal" title="Post"/>
+                                                <connections>
+                                                    <action selector="postTapped:" destination="85X-Di-zeH" eventType="touchUpInside" id="xpg-BT-Kdx"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -556,7 +559,7 @@
                     <connections>
                         <outlet property="activitiesTV" destination="w02-cE-fSm" id="Vzh-e2-rVY"/>
                         <outlet property="petPicker" destination="NUG-Ys-OJ4" id="Kcg-Im-ymj"/>
-                        <outlet property="postBtn" destination="lhm-nz-lb0" id="oLc-lk-IDl"/>
+                        <outlet property="postBtn" destination="lhm-nz-lb0" id="Hfp-YL-GqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfy-aE-lqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

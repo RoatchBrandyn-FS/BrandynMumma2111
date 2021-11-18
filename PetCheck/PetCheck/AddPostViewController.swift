@@ -59,9 +59,15 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     //MARK: Actions
     @IBAction func postTapped(_ sender: UIButton) {
         
-        let timestamp = NSDate.now
         
-        print("\(allPets[selectedPetRow].petName) /  \(selectedActivity!) / \(currentUser.fullNameFL) / \(selectedRoom.creator) / \(selectedRoom.name) / \(timestamp)")
+        let tStamp = dateString()
+        
+        
+        print("\(allPets[selectedPetRow].petName) /  \(selectedActivity!) / \(currentUser.fullNameFL) / \(selectedRoom.creator) / \(selectedRoom.name) / \(tStamp)")
+        
+        SavePost(activity: selectedActivity!, creator: selectedRoom.creator, petName: allPets[selectedPetRow].petName, petType: allPets[selectedPetRow].petType, roomName: selectedRoom.name, tStamp: tStamp, user: currentUser.fullNameFL)
+        
+        navigationController?.popViewController(animated: true)
         
     }
     
@@ -110,6 +116,42 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             else {
                 print("Error occured loading firebase - All Pet Profiles load")
+            }
+        }
+        
+        
+    }
+    
+    func dateString() -> String {
+        
+        let timestamp = NSDate.now
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        
+        let dString = formatter.string(from: timestamp)
+        
+        return "@\(dString)"
+        
+    }
+    
+    func SavePost(activity: String, creator: String, petName: String, petType: String, roomName: String, tStamp: String, user: String) {
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //add new doc for collection
+        database.collection("Posts").addDocument(data: ["activity": activity, "creator": creator, "petName": petName, "petType": petType, "roomName": roomName, "tStamp": tStamp, "user": user ]) { (error) in
+            //Check for errors
+            
+            if error == nil {
+                //No Errors
+                
+            }
+            else{
+                //Deal with error(s)
+                print("Error saving new post")
             }
         }
         
