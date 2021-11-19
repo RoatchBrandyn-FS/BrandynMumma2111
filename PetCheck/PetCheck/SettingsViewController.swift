@@ -7,13 +7,97 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    //MARK: Outlets
+    @IBOutlet weak var settingsTV: UITableView!
+    
+    //MARK: Variables
+    
+    //arrays
+    let creatorSettings = ["Leave Room", "Logout", "Delete Room"]
+    let userSettings = ["Leave Room", "Logout"]
+    
+    //user and room
+    var selectedRoom: Room!
+    var currentuser: User!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Do any additional setup after loading the view.
+        
+        let tabbar = tabBarController as! TabBarController
+        
+        selectedRoom = tabbar.selectedRoom
+        currentuser = tabbar.currentUser
+        
+        settingsTV.delegate = self
+        settingsTV.dataSource = self
+        
+    }
+    
+    //MARK: Actions
+    
+    //MARK: Objects
+    
+    //MARK: Methods
+    
+    //MARK: Tableview callbacks
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if currentuser.fullNameLF == selectedRoom.creator {
+            return creatorSettings.count
+        }
+        else {
+            return userSettings.count
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //set reuse id
+        let cell = settingsTV.dequeueReusableCell(withIdentifier: "setting_cell_01", for: indexPath)
+        
+        //configure cell
+        var setting = ""
+        
+        if currentuser.fullNameLF == selectedRoom.creator {
+            setting = creatorSettings[indexPath.row]
+            
+        }
+        else {
+            setting = userSettings[indexPath.row]
+        }
+        
+        cell.textLabel?.text = setting
+        
+        switch setting {
+        case "Leave Room":
+            cell.imageView?.image = UIImage.init(systemName: "arrowshape.turn.up.left")
+        case "Logout":
+            cell.imageView?.image = UIImage.init(systemName: "arrowshape.turn.up.left.2")
+        case "Delete Room":
+            cell.imageView?.image = UIImage.init(systemName: "xmark.square")
+            cell.textLabel?.textColor = UIColor.red
+            cell.tintColor = UIColor.red
+        default:
+            print("Error setting table view - Settings tab")
+        }
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Settings"
     }
     
 
