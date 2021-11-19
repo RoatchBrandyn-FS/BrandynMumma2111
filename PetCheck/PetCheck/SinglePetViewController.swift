@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SinglePetViewController: UIViewController {
     
@@ -22,10 +23,15 @@ class SinglePetViewController: UIViewController {
     //images
     @IBOutlet weak var petImage: UIImageView!
     
+    //BarButtons
+    @IBOutlet weak var binBarBtn: UIBarButtonItem!
+    
     //MARK: Variables
     
-    //room
+    //room, user, selected pet
     var selectedPet: PetProfile!
+    var currentUser: User!
+    var selectedRoom: Room!
     
 
     override func viewDidLoad() {
@@ -35,10 +41,34 @@ class SinglePetViewController: UIViewController {
         
         navigationItem.title = "\(selectedPet.petName) Info:"
         
+        if currentUser.fullNameLF != selectedRoom.creator {
+            
+            binBarBtn.isEnabled = false
+            binBarBtn.image = nil
+            
+        }
+        
         SetDetails()
     }
     
     //MARK: Actions
+    @IBAction func binBBtnTapped(_ sender: Any) {
+    
+        let deleteALert = UIAlertController(title: "WARNING", message: "This is not a pet delete, this is a Pet Profile removal. Are you sure you want to remove the Pet Profile for \(selectedPet.petName)?", preferredStyle: .alert)
+        
+        deleteALert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        deleteALert.addAction(UIAlertAction(title: "Delete Profile", style: .destructive, handler: { (delete) in
+            
+            print("Should delete profile")
+            
+            self.DeleteProfile()
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        present(deleteALert, animated: true, completion: nil)
+    
+        
+    }
     
     //MARK: Objects
     
@@ -79,6 +109,19 @@ class SinglePetViewController: UIViewController {
         default:
             print("Error loading image - Single Pet Info")
         }
+        
+    }
+    
+    func DeleteProfile() {
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //get doc refference
+        let docRef = database.collection("PetProfiles").document(selectedPet.petProfileID)
+        
+        //delete doc
+        docRef.delete()
         
     }
     

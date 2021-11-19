@@ -206,6 +206,8 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
             if let destination = segue.destination as? SinglePetViewController {
                 
                 destination.selectedPet = petToSend
+                destination.selectedRoom = selectedRoom
+                destination.currentUser = currentUser
                 
             }
             

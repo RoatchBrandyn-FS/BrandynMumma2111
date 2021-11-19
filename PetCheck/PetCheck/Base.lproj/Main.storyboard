@@ -466,9 +466,17 @@
                             <constraint firstItem="ubL-CR-fgM" firstAttribute="bottom" secondItem="vvZ-PN-wdf" secondAttribute="bottom" constant="5" id="hGs-W2-ggN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hzj-8o-QmX"/>
+                    <navigationItem key="navigationItem" id="hzj-8o-QmX">
+                        <barButtonItem key="rightBarButtonItem" image="xmark.bin" catalog="system" id="os3-T2-7xN">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="binBBtnTapped:" destination="4Wr-s7-14Q" id="0Ox-ka-TkQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activitiesTextView" destination="Qae-IV-RAW" id="9o6-W7-sVG"/>
+                        <outlet property="binBarBtn" destination="os3-T2-7xN" id="oFK-KR-XUK"/>
                         <outlet property="descriptionTextView" destination="rS7-fJ-sxK" id="OSK-UU-pBU"/>
                         <outlet property="petImage" destination="vYU-ut-eV2" id="zrR-O4-kqm"/>
                         <outlet property="specificNeedsTextView" destination="Re5-0G-Ke1" id="q35-dj-R1I"/>
@@ -1294,6 +1302,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="note.text" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark.bin" catalog="system" width="128" height="93"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1317,6 +1326,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
