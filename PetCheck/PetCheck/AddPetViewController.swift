@@ -34,17 +34,24 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var dogActivities = ["Fed", "Walked", "Took Potty"]
     var catActivities = ["Fed", "Cleaned Litter Box"]
     var fishActivities = ["Fed", "Cleaned Bowl"]
-    var tStamps = [Date]()
+    var tStamps = [String]()
     
     //user and room
     var selectedRoom: Room!
     var currentUser: User!
     
+    //strings
+    let tStampFirstString = "@ (Go To Posts to Start First Activity)"
+    
+    //numbers
+    var selectedRow = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //print("Room Name in Add Pet: \(selectedRoom.name)")
+        //print("User Name in Add Pet: \(currentUser.fullNameFL)")
         
         navigationItem.title = "Add New Pet"
         
@@ -71,6 +78,14 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    @IBAction func addPetTapped(_ sender: UIButton) {
+        
+        SavePetProfileData(petName: petNameTF.text!, petType: petTypes[selectedRow], description: petDescriptionTF.text!, specificNeeds: petSpecificNeedsTF.text!)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
     //MARK: Objects
     
     //MARK: Methods
@@ -92,17 +107,25 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         //set reamining variables not coming into func
         var activities = [String]()
-        let timeNow = NSDate.now
+        
         
         switch petType {
         case "Dog":
             activities = dogActivities
-            tStamps.append(timeNow)
+            tStamps.append(tStampFirstString)
+            tStamps.append(tStampFirstString)
+            tStamps.append(tStampFirstString)
             
         case "Cat":
             activities = catActivities
+            tStamps.append(tStampFirstString)
+            tStamps.append(tStampFirstString)
+            
         case "Fish":
             activities = fishActivities
+            tStamps.append(tStampFirstString)
+            tStamps.append(tStampFirstString)
+            
         default:
             print("Issue setting activities - Add Pet View")
             
@@ -112,10 +135,18 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let database = Firestore.firestore()
         
         //add document to collection
-        database.collection("PetProfiles").addDocument(data: ["activities": activities, "creator": selectedRoom.creator, "description": description, "petName": petName, "petType": petType, "roomName": selectedRoom.name, "specificNeeds": specificNeeds, "tStamps": tStamps])
-        
-        
-        
+        database.collection("PetProfiles").addDocument(data: ["activities": activities, "creator": selectedRoom.creator, "description": description, "petName": petName, "petType": petType, "roomName": selectedRoom.name, "specificNeeds": specificNeeds, "tStamps": tStamps]){ (error) in
+            //Check for errors
+            
+            if error == nil {
+                //No Errors
+                
+            }
+            else{
+                //Deal with error(s)
+                print("Error saving new pet profile")
+            }
+        }
     }
     
     //MARK: Picker View Callbacks
@@ -134,8 +165,9 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var activeString = ""
+        selectedRow = row
         
-        switch petTypes[row] {
+        switch petTypes[selectedRow] {
         case "Dog":
             for act in dogActivities {
                 activeString.append("\n- \(act)")
@@ -156,6 +188,8 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         
     }
+    
+    
     
 
     /*

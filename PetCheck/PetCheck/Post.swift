@@ -14,6 +14,7 @@ class Post {
     var petName: String
     var tStamp: String
     var user: String
+    var postID: String
     
     var creator: String
     var roomName: String
@@ -24,7 +25,7 @@ class Post {
     }
     
     //Inits
-    init(activity: String, petName: String, tStamp: String, user: String, creator: String, roomName: String) {
+    init(activity: String, petName: String, tStamp: String, user: String, creator: String, roomName: String, postID: String) {
         
         self.activity = activity
         self.petName = petName
@@ -32,6 +33,7 @@ class Post {
         self.user = user
         self.creator = creator
         self.roomName = roomName
+        self.postID = postID
         
     }
     

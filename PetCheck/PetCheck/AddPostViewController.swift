@@ -64,8 +64,12 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         
         print("\(allPets[selectedPetRow].petName) /  \(selectedActivity!) / \(currentUser.fullNameFL) / \(selectedRoom.creator) / \(selectedRoom.name) / \(tStamp)")
+        allPets[selectedPetRow].tStamps.insert(tStamp, at: selectedPetRow)
+        allPets[selectedPetRow].tStamps.remove(at: selectedPetRow + 1)
         
         SavePost(activity: selectedActivity!, creator: selectedRoom.creator, petName: allPets[selectedPetRow].petName, petType: allPets[selectedPetRow].petType, roomName: selectedRoom.name, tStamp: tStamp, user: currentUser.fullNameFL)
+        
+        UpdatePetData()
         
         navigationController?.popViewController(animated: true)
         
@@ -93,6 +97,8 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     
                     snapshot?.documents.forEach({ (petProfile) in
                         
+                        print("Document ID: \(petProfile.documentID)")
+                        
                         guard let creator = petProfile["creator"] as? String, let roomName = petProfile["roomName"] as? String
                         else {return}
                         
@@ -101,7 +107,7 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                             guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let tStamps = petProfile["tStamps"] as? [String]
                             else{return}
                             
-                            self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps))
+                            self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps, petProfileID: petProfile.documentID))
                             
                         }
                         
@@ -155,6 +161,19 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
         }
         
+        
+    }
+    
+    func UpdatePetData() {
+        
+        // set database
+        let database = Firestore.firestore()
+        
+        //get document refference
+        let docRef = database.collection("PetProfiles").document(allPets[selectedPetRow].petProfileID)
+        
+        //update data
+        docRef.updateData(["tStamps": allPets[selectedPetRow].tStamps])
         
     }
     

@@ -89,7 +89,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let tStamp = post["tStamp"] as? String, let user = post["user"] as? String
                             else {return}
                             
-                            self.allRoomPosts.append(Post(activity: activity, petName: petName, tStamp: tStamp, user: user, creator: creator, roomName: roomName))
+                            self.allRoomPosts.append(Post(activity: activity, petName: petName, tStamp: tStamp, user: user, creator: creator, roomName: roomName, postID: post.documentID))
                             
                             print("\(self.allRoomPosts.count.description) in DispatchQ")
                         }

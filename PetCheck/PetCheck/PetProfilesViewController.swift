@@ -94,7 +94,7 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
                             guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let tStamps = petProfile["tStamps"] as? [String]
                             else{return}
                             
-                            self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps))
+                            self.allPets.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps, petProfileID: petProfile.documentID))
                             
                             
                         }
@@ -210,13 +210,13 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
             }
             
         }
-        
-        else if let destination = segue.destination as? AddPetViewController {
+            
+            /*let destination = segue.destination as? AddPetViewController {
             
             destination.currentUser = currentUser
             destination.selectedRoom = selectedRoom
             
-        }
+        }*/
         
     }
     

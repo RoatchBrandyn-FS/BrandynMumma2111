@@ -688,6 +688,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGs-vH-5fe">
                                                 <rect key="frame" x="157.5" y="23.5" width="89" height="30"/>
                                                 <state key="normal" title="Add New Pet"/>
+                                                <connections>
+                                                    <action selector="addPetTapped:" destination="fxx-fw-PWC" eventType="touchUpInside" id="B1Z-VP-D5L"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

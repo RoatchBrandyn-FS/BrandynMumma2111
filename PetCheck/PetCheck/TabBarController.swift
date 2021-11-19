@@ -81,7 +81,7 @@ class TabBarController: UITabBarController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let s = sender as? UIBarButtonItem {
+        if (sender as? UIBarButtonItem) != nil {
             
             if selectedIndex == 0 {
                 let destination = segue.destination as? AddPostViewController
@@ -91,6 +91,10 @@ class TabBarController: UITabBarController {
                 
             }
             else if selectedIndex == 1 {
+                let destination = segue.destination as? AddPetViewController
+                
+                destination?.selectedRoom = selectedRoom
+                destination?.currentUser = currentUser
                 
             }
             
