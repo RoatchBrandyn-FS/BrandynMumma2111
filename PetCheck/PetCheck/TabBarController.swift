@@ -39,6 +39,7 @@ class TabBarController: UITabBarController {
         if selectedIndex == 0 {
             performSegue(withIdentifier: "TabToAddPost", sender: sender)
         }
+        
         else if selectedIndex == 1 {
             performSegue(withIdentifier: "TabToAddPet", sender: sender)
         }
@@ -68,12 +69,12 @@ class TabBarController: UITabBarController {
         if item.title == "Activity Posts" {
             print("Tab 1 Tapepd")
             plusBarBtn.isEnabled = true
-            plusBarBtn.image = UIImage.init(systemName: "plus")
+            plusBarBtn.image = UIImage.init(systemName: "square.and.pencil")
         }
         else if item.title == "My Pets"{
             print("Tab 2 Tapped")
             plusBarBtn.isEnabled = true
-            plusBarBtn.image = UIImage.init(systemName: "plus")
+            plusBarBtn.image = UIImage.init(systemName: "square.and.pencil")
         }
         else if item.title == "Settings" {
             plusBarBtn.isEnabled = false
@@ -107,13 +108,6 @@ class TabBarController: UITabBarController {
                 
             }
             
-            else if selectedIndex == 2 {
-                
-                let destination = segue.destination as? SettingsViewController
-                
-                
-                print("Going to Settings Tab")
-            }
             
         }
         

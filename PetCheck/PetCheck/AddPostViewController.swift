@@ -112,8 +112,23 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     })
                     
                     self.petPicker.reloadAllComponents()
-                    self.petActivities = self.allPets[self.selectedPetRow].activities
-                    self.activitiesTV.reloadData()
+                    
+                    print("All pets count: \(self.allPets.count)")
+                    
+                    if self.allPets.count == 0 {
+                        let petAlert = UIAlertController(title: "Hold up...", message: "You must add a Pet Profile before you can post any activities.", preferredStyle: .alert)
+                        
+                        petAlert.addAction(UIAlertAction(title: "Back To Activity Posts", style: .default, handler: { (continue) in
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                        
+                        self.present(petAlert, animated: true, completion: nil)
+                    }
+                    else {
+                        self.petActivities = self.allPets[self.selectedPetRow].activities
+                        self.activitiesTV.reloadData()
+                        
+                    }
                     
                 }
                 
