@@ -263,6 +263,31 @@
             </objects>
             <point key="canvasLocation" x="3917" y="856"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="Yfy-bW-WBI">
+            <objects>
+                <viewController id="GUP-h1-ISN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="flP-ii-p1y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPh-DO-VN8">
+                                <rect key="frame" x="176" y="107" width="63" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bTK-SE-koG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="Khv-zr-H9P"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kD3-aQ-foN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4809" y="856"/>
+        </scene>
         <!--Single Pet View Controller-->
         <scene sceneID="M4V-10-W5s">
             <objects>
@@ -566,7 +591,7 @@
             </objects>
             <point key="canvasLocation" x="3992.753623188406" y="-751.33928571428567"/>
         </scene>
-        <!--Home-->
+        <!--Activity Posts-->
         <scene sceneID="gI3-9g-lb7">
             <objects>
                 <viewController id="zI9-VW-4Ao" customClass="PostsViewController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
@@ -615,7 +640,7 @@
                             <constraint firstItem="oRr-SS-6td" firstAttribute="leading" secondItem="8YF-oy-X8o" secondAttribute="leading" constant="5" id="mIh-Ke-0qM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="Kn0-GK-DH9"/>
+                    <tabBarItem key="tabBarItem" title="Activity Posts" image="square.and.pencil" catalog="system" id="Kn0-GK-DH9"/>
                     <connections>
                         <outlet property="postsTV" destination="oRr-SS-6td" id="MTa-jA-dzG"/>
                     </connections>
@@ -646,6 +671,7 @@
                         <segue destination="D2O-zg-hW0" kind="relationship" relationship="viewControllers" id="rYM-ZC-LFm"/>
                         <segue destination="85X-Di-zeH" kind="show" identifier="TabToAddPost" id="6fi-at-2sE"/>
                         <segue destination="fxx-fw-PWC" kind="show" identifier="TabToAddPet" id="xM8-pL-wHi"/>
+                        <segue destination="GUP-h1-ISN" kind="relationship" relationship="viewControllers" id="VmV-xT-Qsx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSy-bu-A7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1239,9 +1265,10 @@
     </scenes>
     <resources>
         <image name="PawLarge" width="272.07000732421875" height="251.94999694824219"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

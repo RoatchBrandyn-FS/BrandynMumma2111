@@ -84,6 +84,7 @@ class TabBarController: UITabBarController {
         if (sender as? UIBarButtonItem) != nil {
             
             if selectedIndex == 0 {
+                
                 let destination = segue.destination as? AddPostViewController
                 
                 destination?.selectedRoom = selectedRoom
@@ -96,6 +97,14 @@ class TabBarController: UITabBarController {
                 destination?.selectedRoom = selectedRoom
                 destination?.currentUser = currentUser
                 
+            }
+            
+            else if selectedIndex == 2 {
+                
+                let destination = segue.destination as? SettingsViewController
+                
+                
+                print("Going to Settings Tab")
             }
             
         }

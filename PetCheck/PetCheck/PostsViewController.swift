@@ -86,10 +86,10 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
                             
-                            guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let tStamp = post["tStamp"] as? String, let user = post["user"] as? String
+                            guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let petType = post["petType"] as? String, let tStamp = post["tStamp"] as? String, let user = post["user"] as? String
                             else {return}
                             
-                            self.allRoomPosts.append(Post(activity: activity, petName: petName, tStamp: tStamp, user: user, creator: creator, roomName: roomName, postID: post.documentID))
+                            self.allRoomPosts.append(Post(activity: activity, petName: petName, petType: petType, tStamp: tStamp, user: user, creator: creator, roomName: roomName, postID: post.documentID))
                             
                             print("\(self.allRoomPosts.count.description) in DispatchQ")
                         }
@@ -131,8 +131,22 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.textLabel?.text = post.postString
         cell.detailTextLabel?.text = post.tStamp.description
+        //cell.imageView?.image =
         
         cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
+        switch post.petType {
+        
+        case "Dog":
+            cell.imageView?.image = UIImage.init(named: "dogIcon")
+        case "Cat":
+            cell.imageView?.image = UIImage.init(named: "catIcon")
+        case "Fish":
+            cell.imageView?.image = UIImage.init(named: "fishIcon")
+        default:
+            print("Error loading image - Pet Profile Cells")
+        
+        }
         
         cell.layer.cornerRadius = 20
         

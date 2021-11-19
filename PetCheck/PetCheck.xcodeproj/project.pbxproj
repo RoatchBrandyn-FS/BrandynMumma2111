@@ -22,6 +22,7 @@
 		5DC063FC2740F94A00FACAB6 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063FB2740F94A00FACAB6 /* AddPostViewController.swift */; };
 		5DC063FF2740FB6700FACAB6 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC063FE2740FB6700FACAB6 /* AddPetViewController.swift */; };
 		5DC064022740FC8100FACAB6 /* SinglePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC064012740FC8100FACAB6 /* SinglePetViewController.swift */; };
+		5DC06406274739F600FACAB6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC06405274739F600FACAB6 /* SettingsViewController.swift */; };
 		5DFA6BA62734FA9D003F9A0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */; };
 		5DFA6BAA2734FBF0003F9A0A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5DFA6BA92734FBF0003F9A0A /* FirebaseFirestore */; };
 		5DFA6BAD27350B1F003F9A0A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA6BAC27350B1F003F9A0A /* User.swift */; };
@@ -48,6 +49,7 @@
 		5DC063FB2740F94A00FACAB6 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		5DC063FE2740FB6700FACAB6 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
 		5DC064012740FC8100FACAB6 /* SinglePetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetViewController.swift; sourceTree = "<group>"; };
+		5DC06405274739F600FACAB6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5DFA6BA52734FA9D003F9A0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DFA6BAC27350B1F003F9A0A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5DFA6BB12735D371003F9A0A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				5DC063FB2740F94A00FACAB6 /* AddPostViewController.swift */,
 				5DC063FE2740FB6700FACAB6 /* AddPetViewController.swift */,
 				5DC064012740FC8100FACAB6 /* SinglePetViewController.swift */,
+				5DC06405274739F600FACAB6 /* SettingsViewController.swift */,
 			);
 			path = PetCheck;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				5D7905F02734F54B0001C5F4 /* LoginViewController.swift in Sources */,
 				5D7905EC2734F54B0001C5F4 /* AppDelegate.swift in Sources */,
 				5D7905EE2734F54B0001C5F4 /* SceneDelegate.swift in Sources */,
+				5DC06406274739F600FACAB6 /* SettingsViewController.swift in Sources */,
 				5DFA6BB5273636D1003F9A0A /* AllRoomsViewController.swift in Sources */,
 				5DC063FF2740FB6700FACAB6 /* AddPetViewController.swift in Sources */,
 				5DC063F0273F474300FACAB6 /* PetProfilesViewController.swift in Sources */,
