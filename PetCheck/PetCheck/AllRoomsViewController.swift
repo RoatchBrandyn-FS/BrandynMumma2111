@@ -129,13 +129,14 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         self.allRooms.append(newRoom)
                         
-                        if newRoom.creator == self.currentUser.fullNameLF {
+                        /* if newRoom.creator == self.currentUser.fullNameLF {
                             self.sortedRooms.append(newRoom)
-                        }
+                        } */
                         
                         
                     })
                     
+                    self.sortedRooms = self.allRooms
                     self.tableView.reloadData()
                     
                 }
@@ -162,7 +163,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Table View callbacks
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allRooms.count
+        return sortedRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -170,7 +171,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "room_cell_01", for: indexPath)
         
         //Configure cells for either situation
-        let room = allRooms[indexPath.row]
+        let room = sortedRooms[indexPath.row]
         
         cell.textLabel?.text = room.name
         cell.detailTextLabel?.text = room.creator
@@ -195,7 +196,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let roomToSend = allRooms[indexPath.row]
+        let roomToSend = sortedRooms[indexPath.row]
         
         CheckCredentials(roomID: roomToSend.roomID, roomPassword: roomToSend.password, creator: roomToSend.creator, roomName: roomToSend.name)
         
@@ -224,10 +225,41 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func updateSearchResults(for searchController: UISearchController) {
         print("updated")
+        
+        //get searchBar text
+        let searchText = searchController.searchBar.text
+        
+        //get scope button selected
+        let selectedScope = searchController.searchBar.selectedScopeButtonIndex
+        let allScopeTitles = searchController.searchBar.scopeButtonTitles!
+        let scopeTitle = allScopeTitles[selectedScope]
+        
+        // --- FIlter Search Content ---
+        
+        //set allRooms to sortedRooms for filtering
+        sortedRooms = allRooms
+        
+        //filter text
+        if searchText != "" {
+            
+            sortedRooms = sortedRooms.filter { (room) -> Bool in
+                return room.name.lowercased().range(of: searchText!.lowercased()) != nil
+            }
+            
+        }
+        
+        //filter on scope
+        
+        
+        
+        
+        //reload table
+        tableView.reloadData()
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print("scope tapped")
+        updateSearchResults(for: searchController)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
