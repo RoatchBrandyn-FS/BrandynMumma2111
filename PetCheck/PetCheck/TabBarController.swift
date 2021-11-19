@@ -65,11 +65,19 @@ class TabBarController: UITabBarController {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.title == "Home" {
+        if item.title == "Activity Posts" {
             print("Tab 1 Tapepd")
+            plusBarBtn.isEnabled = true
+            plusBarBtn.image = UIImage.init(systemName: "plus")
         }
         else if item.title == "My Pets"{
             print("Tab 2 Tapped")
+            plusBarBtn.isEnabled = true
+            plusBarBtn.image = UIImage.init(systemName: "plus")
+        }
+        else if item.title == "Settings" {
+            plusBarBtn.isEnabled = false
+            plusBarBtn.image = nil
         }
     }
     

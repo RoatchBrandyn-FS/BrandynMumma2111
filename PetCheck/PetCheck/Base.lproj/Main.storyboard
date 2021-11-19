@@ -654,7 +654,7 @@
             <objects>
                 <tabBarController id="B3M-KQ-S43" customClass="TabBarController" customModule="PetCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xu4-Ki-wfR">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Wu0-Sg-Deo">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Wu0-Sg-Deo">
                             <connections>
                                 <action selector="plusTapped:" destination="B3M-KQ-S43" id="vYG-Yf-Wur"/>
                             </connections>
