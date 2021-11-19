@@ -26,6 +26,16 @@ class SinglePetViewController: UIViewController {
     //BarButtons
     @IBOutlet weak var binBarBtn: UIBarButtonItem!
     
+    //views
+    @IBOutlet weak var descriptionView: UIView!
+    
+    @IBOutlet weak var specificView: UIView!
+    
+    @IBOutlet weak var activitiesView: UIView!
+    
+    @IBOutlet weak var labelView: UIView!
+    
+    
     //MARK: Variables
     
     //room, user, selected pet
@@ -49,6 +59,7 @@ class SinglePetViewController: UIViewController {
         }
         
         SetDetails()
+        SetCorners()
     }
     
     //MARK: Actions
@@ -122,6 +133,18 @@ class SinglePetViewController: UIViewController {
         
         //delete doc
         docRef.delete()
+        
+    }
+    
+    func SetCorners() {
+        
+        for view in [labelView, descriptionView, specificView, activitiesView] {
+            view?.layer.cornerRadius = 20
+        }
+        
+        for tView in [descriptionTextView, specificNeedsTextView, activitiesTextView] {
+            tView?.layer.cornerRadius = 20
+        }
         
     }
     
