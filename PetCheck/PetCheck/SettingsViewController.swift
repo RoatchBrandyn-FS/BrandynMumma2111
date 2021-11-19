@@ -44,6 +44,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: Methods
     
+    func LeaveRoom() {
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+    func Logout() {
+        
+        navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
     //MARK: Tableview callbacks
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,6 +110,34 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Settings"
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var settingChoice = ""
+        
+        if currentuser.fullNameLF == selectedRoom.creator {
+            settingChoice = creatorSettings[indexPath.row]
+            
+        }
+        else {
+            settingChoice = userSettings[indexPath.row]
+            
+        }
+        
+        switch settingChoice {
+        case "Leave Room":
+            print("Should Leave Room")
+            LeaveRoom()
+        case "Logout":
+            print("Should logout to first view")
+            Logout()
+        case "Delete Room":
+            print("Should delete room, and return to All Rooms View")
+        default:
+            print("Error choosing settings option")
+        }
+        
     }
     
 

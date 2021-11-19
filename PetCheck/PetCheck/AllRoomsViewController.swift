@@ -162,7 +162,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Table View callbacks
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedRooms.count
+        return allRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -170,7 +170,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "room_cell_01", for: indexPath)
         
         //Configure cells for either situation
-        let room = sortedRooms[indexPath.row]
+        let room = allRooms[indexPath.row]
         
         cell.textLabel?.text = room.name
         cell.detailTextLabel?.text = room.creator
@@ -195,7 +195,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let roomToSend = sortedRooms[indexPath.row]
+        let roomToSend = allRooms[indexPath.row]
         
         CheckCredentials(roomID: roomToSend.roomID, roomPassword: roomToSend.password, creator: roomToSend.creator, roomName: roomToSend.name)
         
@@ -264,7 +264,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             
             print("Selected index: \(indexPath.description)")
             
-            let roomToSend = sortedRooms[indexPath.row]
+            let roomToSend = allRooms[indexPath.row]
             
             print("\(roomToSend.name) before segue")
             
