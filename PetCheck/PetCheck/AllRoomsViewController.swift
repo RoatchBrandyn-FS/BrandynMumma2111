@@ -122,7 +122,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
                         
                         print(name)
                         
-                        let newRoom = Room(name: name, creator: creator, roomID: roomID, password: password)
+                        let newRoom = Room(name: name, creator: creator, roomID: roomID, password: password, docID: doc.documentID)
                         
                         print("---")
                         print("\(newRoom.name) obj in dispatch")

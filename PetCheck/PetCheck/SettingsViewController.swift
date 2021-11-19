@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -55,6 +56,158 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         navigationController?.popToRootViewController(animated: true)
         
     }
+    
+    func DeleteAlertWarning() {
+        
+        let deleteALert = UIAlertController(title: "WARNING", message: "This will Delete the entire room and all other data stored here. Are you sure you want to delete the room \(selectedRoom.name)?", preferredStyle: .alert)
+        
+        deleteALert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        deleteALert.addAction(UIAlertAction(title: "Delete Profile", style: .destructive, handler: { (delete) in
+            
+            print("Should delete Room, Profiles, and Posts for this Room")
+            
+            DispatchQueue.main.async {
+                self.ReadRoomPosts()
+                self.ReadRoomPetProfiles()
+                self.DeleteRoom()
+
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }))
+        
+        present(deleteALert, animated: true, completion: nil)
+        
+    }
+    
+    func DeleteRoom() {
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //get doc refference
+        let docRef = database.collection("Rooms").document(selectedRoom.docID)
+        
+        //delete doc
+        docRef.delete()
+        
+    }
+    
+    func ReadRoomPosts() {
+        
+        var posts = [Post]()
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //read document for posts
+        database.collection("Posts").getDocuments { (snapshot, error) in
+            
+            if error == nil {
+                
+                //Get posts and orgianize based on selected room
+                DispatchQueue.main.async {
+                    
+                    snapshot?.documents.forEach({ (post) in
+                        
+                        guard let creator = post["creator"] as? String, let roomName = post["roomName"] as? String
+                        else {return}
+                        
+                        if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
+                            
+                            guard let activity = post["activity"] as? String, let petName = post["petName"] as? String, let petType = post["petType"] as? String, let tStamp = post["tStamp"] as? String, let user = post["user"] as? String
+                            else {return}
+                            
+                            posts.append(Post(activity: activity, petName: petName, petType: petType, tStamp: tStamp, user: user, creator: creator, roomName: roomName, postID: post.documentID))
+                            
+                            
+                        }
+                        
+                    })
+                    
+                    for post in posts {
+                        
+                        //set database
+                        let database = Firestore.firestore()
+                        
+                        //get doc refference
+                        let docRef = database.collection("Posts").document(post.postID)
+                        
+                        //delete doc
+                        docRef.delete()
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            else {
+                print("Error occured loading firebase - All Posts load")
+            }
+            
+        }
+        
+    }
+    
+    func ReadRoomPetProfiles() {
+        
+        var petProfiles = [PetProfile]()
+        
+        //set database
+        let database = Firestore.firestore()
+        
+        //read documents for pet profiles
+        database.collection("PetProfiles").getDocuments { (snapshot, error) in
+            
+            if error == nil {
+                
+                //Get pet profiles and organize bsaed on selected room
+                DispatchQueue.main.async {
+                    
+                    snapshot?.documents.forEach({ (petProfile) in
+                        
+                        guard let creator = petProfile["creator"] as? String, let roomName = petProfile["roomName"] as? String
+                        else {return}
+                        
+                        if creator == self.selectedRoom.creator && roomName == self.selectedRoom.name {
+                            
+                            guard let petName = petProfile["petName"] as? String, let petType = petProfile["petType"] as? String, let description = petProfile["description"] as? String, let specificNeeds = petProfile["specificNeeds"] as? String, let activities = petProfile["activities"] as? [String], let tStamps = petProfile["tStamps"] as? [String]
+                            else{return}
+                            
+                            petProfiles.append(PetProfile(petName: petName, petType: petType, description: description, specificNeeds: specificNeeds, activities: activities, tStamps: tStamps, petProfileID: petProfile.documentID))
+                            
+                            
+                        }
+                        
+                    })
+                    
+                    for petProfile in petProfiles {
+                        
+                        //set database
+                        let database = Firestore.firestore()
+                        
+                        //get doc refference
+                        let docRef = database.collection("PetProfiles").document(petProfile.petProfileID)
+                        
+                        //delete doc
+                        docRef.delete()
+                        
+                    }
+                    
+                }
+                
+            }
+            else {
+                print("Error occured loading firebase - All Pet Profiles load")
+            }
+        }
+        
+    }
+    
+    
+    
+    
     
     //MARK: Tableview callbacks
     
@@ -134,6 +287,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             Logout()
         case "Delete Room":
             print("Should delete room, and return to All Rooms View")
+            DeleteAlertWarning()
         default:
             print("Error choosing settings option")
         }

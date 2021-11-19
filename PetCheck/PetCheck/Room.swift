@@ -14,15 +14,17 @@ class Room {
     var creator: String
     var roomID: String
     var password: String
+    var docID: String
     
     //Computed Properties
     
     //Inits
-    init(name: String, creator: String, roomID: String, password: String) {
+    init(name: String, creator: String, roomID: String, password: String, docID: String) {
         self.name = name
         self.creator = creator
         self.roomID = roomID
         self.password = password
+        self.docID = docID
         
     }
     
