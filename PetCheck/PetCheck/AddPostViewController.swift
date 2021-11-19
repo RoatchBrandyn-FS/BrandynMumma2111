@@ -61,15 +61,13 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         
         let tStamp = dateString()
-        
+        let replacedTStampNum = allPets[selectedPetRow].activities.firstIndex(of: selectedActivity!)
         
         print("\(allPets[selectedPetRow].petName) /  \(selectedActivity!) / \(currentUser.fullNameFL) / \(selectedRoom.creator) / \(selectedRoom.name) / \(tStamp)")
-        allPets[selectedPetRow].tStamps.insert(tStamp, at: selectedPetRow)
-        allPets[selectedPetRow].tStamps.remove(at: selectedPetRow + 1)
+        allPets[selectedPetRow].tStamps.insert(tStamp, at: replacedTStampNum!)
+        allPets[selectedPetRow].tStamps.remove(at: replacedTStampNum! + 1)
         
-        SavePost(activity: selectedActivity!, creator: selectedRoom.creator, petName: allPets[selectedPetRow].petName, petType: allPets[selectedPetRow].petType, roomName: selectedRoom.name, tStamp: tStamp, user: currentUser.fullNameFL)
-        
-        UpdatePetData()
+        SavePost(activity: selectedActivity!, creator: selectedRoom.creator, petName: allPets[selectedPetRow].petName, petType: allPets[selectedPetRow].petType, roomName: selectedRoom.name, tStamp: tStamp, user: currentUser.fullNameFL, row: selectedPetRow)
         
         navigationController?.popViewController(animated: true)
         
@@ -142,7 +140,7 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
-    func SavePost(activity: String, creator: String, petName: String, petType: String, roomName: String, tStamp: String, user: String) {
+    func SavePost(activity: String, creator: String, petName: String, petType: String, roomName: String, tStamp: String, user: String, row: Int) {
         
         //set database
         let database = Firestore.firestore()
@@ -153,6 +151,7 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             if error == nil {
                 //No Errors
+                self.UpdatePetData(row: row)
                 
             }
             else{
@@ -164,7 +163,7 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
-    func UpdatePetData() {
+    func UpdatePetData(row: Int) {
         
         // set database
         let database = Firestore.firestore()
