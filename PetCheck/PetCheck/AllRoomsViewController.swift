@@ -215,7 +215,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         //set searchbar
         searchController.searchBar.delegate = self
-        searchController.searchBar.scopeButtonTitles = ["Room Names", "Creators", "My Rooms"]
+        searchController.searchBar.scopeButtonTitles = ["Rooms By Name", "Rooms By Creator", "My Rooms"]
         
         //set to navigation
         navigationItem.searchController = searchController
@@ -242,8 +242,20 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         //filter text
         if searchText != "" {
             
-            sortedRooms = sortedRooms.filter { (room) -> Bool in
-                return room.name.lowercased().range(of: searchText!.lowercased()) != nil
+            if scopeTitle == "Room Names" {
+                
+                sortedRooms = sortedRooms.filter { (room) -> Bool in
+                    return room.name.lowercased().range(of: searchText!.lowercased()) != nil
+                }
+                
+            }
+            
+            else if scopeTitle == "Creators" {
+                
+                sortedRooms = sortedRooms.filter { (room) -> Bool in
+                    return room.creator.lowercased().range(of: searchText!.lowercased()) != nil
+                }
+                
             }
             
         }
@@ -251,6 +263,23 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         //filter on scope
         
         
+        if scopeTitle == "My Rooms" {
+            
+            sortedRooms = sortedRooms.filter({
+                
+                $0.creator.range(of: currentUser.fullNameLF) != nil
+                
+            })
+            
+            if searchText != "" {
+                
+                sortedRooms = sortedRooms.filter { (room) -> Bool in
+                    return room.name.lowercased().range(of: searchText!.lowercased()) != nil
+                }
+                
+            }
+            
+        }
         
         
         //reload table
