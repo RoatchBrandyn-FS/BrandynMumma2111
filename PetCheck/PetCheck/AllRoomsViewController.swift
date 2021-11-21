@@ -76,22 +76,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    @IBAction func myRoomsTapped(_ sender: UIBarButtonItem) {
-        
-        sortedRooms.removeAll()
-        userRoomOnly = true
-        
-        for room in allRooms {
-            if room.creator == currentUser.fullNameLF {
-                sortedRooms.append(room)
-            }
-        }
-        
-        tableView.reloadData()
-    }
-    
-    
-    
     //MARK: Objects
     
     //MARK: Methods
@@ -244,6 +228,8 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if scopeTitle == "Room Names" {
                 
+                userRoomOnly = false
+                
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.name.lowercased().range(of: searchText!.lowercased()) != nil
                 }
@@ -251,6 +237,8 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             else if scopeTitle == "Creators" {
+                
+                userRoomOnly = false
                 
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.creator.lowercased().range(of: searchText!.lowercased()) != nil
@@ -264,6 +252,8 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         if scopeTitle == "My Rooms" {
+            
+            userRoomOnly = true
             
             sortedRooms = sortedRooms.filter({
                 
@@ -352,6 +342,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         roomAlert.addTextField { (field) in
             field.placeholder = "Enter Password..."
             field.returnKeyType = .continue
+            field.isSecureTextEntry = true
         }
         
         roomAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
