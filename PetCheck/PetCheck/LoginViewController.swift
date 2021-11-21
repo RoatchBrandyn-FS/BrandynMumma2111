@@ -40,8 +40,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         SetCorners()
         
-        //ReadUserDoc()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,25 +54,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-    
-    //MARK: Actions
-    @IBAction func btnTapped(_ sender: UIButton){
-        
-        /*switch sender.currentTitle {
-        case "Login":
-            print("Login Tapped")
-            CheckText()
-        
-        case "Register":
-            print("Register Tapped")
-            
-        default:
-            print("Error - Not a valid button for this action")
-        }*/
-        
-    }
-    
-    //MARK: Objects
     
     //MARK: Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -134,9 +113,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             if credentialsConfrimed == false {
                 
-                print("emailTF: \(emailTF.text!) / user email: \(user.email)")
-                print("passwordTF: \(passwordTF.text!) / user password: \(user.password)")
-                
                 if user.email == emailTF.text && user.password == passwordTF.text {
                     
                     credentialsConfrimed = true
@@ -183,14 +159,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         guard let firstName = doc["firstName"] as? String, let lastName = doc["lastName"] as? String, let email = doc["email"] as? String, let password = doc["password"] as? String
                         else{ return }
                         
-                        print("\(firstName) /\(lastName) /\(email) /\(password)")
-                        
                         self.allUsers.append(User(firstName: firstName, lastName: lastName, email: email, password: password))
-                        print("\(self.allUsers.count.description) - In snapshot foreach")
                         
                     })
                     
-                    print("\(self.allUsers.count.description) - In dispatchqueue")
                     
                 }
                 

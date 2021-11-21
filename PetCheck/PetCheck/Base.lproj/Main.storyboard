@@ -106,7 +106,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4q-lN-iNW"/>
                                             <segue destination="uoa-vT-IVd" kind="show" identifier="LoginToAllRooms" id="l3C-Os-zkm"/>
                                         </connections>
                                     </button>
@@ -147,7 +146,7 @@
                         <outlet property="btnView" destination="MOR-k1-Oea" id="CQh-fu-aik"/>
                         <outlet property="containerView" destination="FSE-Fl-jOL" id="kMF-yr-1wr"/>
                         <outlet property="emailTF" destination="d62-rq-Nuc" id="cAk-fA-oMX"/>
-                        <outlet property="loginBtn" destination="k08-3m-ge5" id="Fro-V4-1YV"/>
+                        <outlet property="loginBtn" destination="k08-3m-ge5" id="lyw-hx-egh"/>
                         <outlet property="passwordTF" destination="QGe-6Q-MzY" id="dGH-Yj-Vuu"/>
                         <outlet property="tfView" destination="sD4-EL-Zo6" id="Kyr-cS-nFR"/>
                         <outlet property="titleView" destination="0Hk-Xr-pLo" id="1YJ-VU-co4"/>

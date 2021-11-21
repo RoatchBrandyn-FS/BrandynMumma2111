@@ -50,18 +50,8 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         ReadRoomsDoc()
-        
-        print("\(allRooms.count.description) -> vwa")
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("All Rooms Count: \(allRooms.count.description) -> vda")
-        
-        print("User Rooms Count: \(sortedRooms.count.description) -> vda")
         
     }
     
@@ -71,8 +61,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         navigationController?.popToRootViewController(animated: true)
         
     }
-    
-    //MARK: Objects
     
     //MARK: Methods
     
@@ -100,18 +88,9 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
                         guard let creator = doc["creator"] as? String, let name = doc["name"] as? String, let password = doc["password"] as? String, let roomID = doc["roomID"] as? String
                         else{return}
                         
-                        print(name)
-                        
                         let newRoom = Room(name: name, creator: creator, roomID: roomID, password: password, docID: doc.documentID)
                         
-                        print("---")
-                        print("\(newRoom.name) obj in dispatch")
-                        
                         self.allRooms.append(newRoom)
-                        
-                        /* if newRoom.creator == self.currentUser.fullNameLF {
-                            self.sortedRooms.append(newRoom)
-                        } */
                         
                         
                     })
@@ -129,14 +108,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
         }
-        
-    }
-    
-    func ReadPostsDocs() {
-        
-    }
-    
-    func ReadProfilesDocs() {
         
     }
     
@@ -219,7 +190,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         //filter text
         if searchText != "" {
             
-            if scopeTitle == "Room Names" {
+            if scopeTitle == "Rooms By Name" {
                 
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.name.lowercased().range(of: searchText!.lowercased()) != nil
@@ -227,7 +198,7 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
                 
             }
             
-            else if scopeTitle == "Creators" {
+            else if scopeTitle == "Rooms By Creator" {
                 
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.creator.lowercased().range(of: searchText!.lowercased()) != nil
@@ -300,14 +271,10 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         if let indexPath = tableView.indexPathForSelectedRow {
             
-            print("Selected index: \(indexPath.description)")
-            
             let roomToSend = allRooms[indexPath.row]
             
-            print("\(roomToSend.name) before segue")
-            
             if let destination = segue.destination as? TabBarController {
-                print("\(roomToSend.name) in segue")
+                
                 destination.selectedRoom = roomToSend
                 destination.currentUser = currentUser
             }
@@ -342,10 +309,17 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             let passwordTF = fields[1]
             
             guard let id = idTF.text, !id.isEmpty, let password = passwordTF.text, !password.isEmpty
-            else { return }
+            else {
+                
+                let roomStatusAlert = UIAlertController(title: "Sorry...", message: "Not all required fields were filled.", preferredStyle: .alert)
+                roomStatusAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(roomStatusAlert, animated: true, completion: nil)
+                
+                return
+                
+            }
             
-            print("roomID: \(id)")
-            print("room password: \(password)")
             
             if roomID != id || roomPassword != password {
                 

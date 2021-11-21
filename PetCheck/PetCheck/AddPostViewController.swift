@@ -79,8 +79,6 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
-    //MARK: Objects
-    
     //MARK: Methods
     
     func ReadPetProfileDocs() {
@@ -118,8 +116,6 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     })
                     
                     self.petPicker.reloadAllComponents()
-                    
-                    print("All pets count: \(self.allPets.count)")
                     
                     if self.allPets.count == 0 {
                         let petAlert = UIAlertController(title: "Hold up...", message: "You must add a Pet Profile before you can post any activities.", preferredStyle: .alert)
@@ -275,17 +271,5 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             postBtn.isEnabled = true
         }
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

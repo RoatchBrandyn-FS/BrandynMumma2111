@@ -46,13 +46,9 @@ class TabBarController: UITabBarController {
         
     }
     
-    //MARK: Objects
-    
     //MARK: Methods
     
     func SetRoomDetails() {
-        
-        //print("\(selectedRoom.name) in Tabbed Room")
         
         if selectedRoom != nil {
             navigationItem.title = "Room: \(selectedRoom.name)"

@@ -39,10 +39,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    //MARK: Actions
-    
-    //MARK: Objects
-    
     //MARK: Methods
     
     func LeaveRoom() {
@@ -63,8 +59,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         deleteALert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         deleteALert.addAction(UIAlertAction(title: "Delete Profile", style: .destructive, handler: { (delete) in
-            
-            print("Should delete Room, Profiles, and Posts for this Room")
             
             DispatchQueue.main.async {
                 self.ReadRoomPosts()
@@ -262,7 +256,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Settings"
+        return "Settings"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -293,16 +287,5 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

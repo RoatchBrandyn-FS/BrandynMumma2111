@@ -56,7 +56,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if firstNameTF.text?.isEmpty == true || lastNameTF.text?.isEmpty == true || emailTF.text?.isEmpty == true || passwordTF.text?.isEmpty == true || confirmPasswordTF.text?.isEmpty == true {
             
-            print("TF is empty")
             
             TFEmpty()
             passwordTF.text?.removeAll()
@@ -91,8 +90,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             else{
                 
-                print("All TF's filled and both Passwords match.")
-                
                 SaveUserData(firstName: firstNameTF.text!, lastName: lastNameTF.text!, email: emailTF.text!, password: passwordTF.text!)
                 
                 let saveAlert = UIAlertController(title: "New User Registered!", message: "User registration successful for \(firstNameTF.text!) and ready to login!", preferredStyle: .alert)
@@ -111,8 +108,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-    //MARK: Objects
     
     //MARK: Methods
     
@@ -181,16 +176,5 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         createBtn.layer.cornerRadius = 10
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

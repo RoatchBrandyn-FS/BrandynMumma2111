@@ -19,10 +19,8 @@ For Room Testing Purposes, Test Room 1 Is the only room with any pet profiles an
 2. Password: Password1
 
 ## Known Bugs
-1. Add Posts and Add Room aren't completely finished and won't save any information. The Pickers and Tableviews all are set to show changes, and there are some validations in place. Just not all ending functions are in place to save and push navigation back in pace on either screen. 
-2. The settings tab has not been setup yet. There is no way to logout the user or exit the room once inside the room without stopping the app first.
+1. No known bugs, all other bugs/issues were fixed this week.
 
 ## Special Requirements or Other Information:
-- Some buttons/functions in the All Rooms Screen aren't fully functional yet: Selecting a room, Adding a Room, and Searchbar.
-- Color scheme has not been chosen yet. The Login Screen and the Registeration Screen are the only ones in color and are different to see what would look better overall.
-- New information added in the Known Bugs section for incomplete sections
+1.  The only thing I couldn't figure out was an issue registering new users. Wasn't able to replicate the issue where I couldn't create a new user.
+2. Was able to go and add the scroll views to multiple screens to help with smaller phone screens.

@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     //MARK: Outlets
     
@@ -56,8 +56,6 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //print("Room Name in Add Pet: \(selectedRoom.name)")
-        //print("User Name in Add Pet: \(currentUser.fullNameFL)")
         
         navigationItem.title = "Add New Pet"
         
@@ -71,6 +69,13 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         activitiesTextView.text = activeString
         
         SetCorners()
+        
+        for tf in [petNameTF, petDescriptionTF,petSpecificNeedsTF] {
+            
+            tf?.delegate = self
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,9 +97,6 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    //MARK: Objects
     
     //MARK: Methods
     
@@ -172,6 +174,12 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
     //MARK: Picker View Callbacks
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -211,18 +219,5 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

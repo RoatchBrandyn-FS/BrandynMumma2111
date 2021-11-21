@@ -29,7 +29,6 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         
         let tabbar = tabBarController as! TabBarController
-        print(String("Current Room: \(tabbar.selectedRoom.name)"))
         
         selectedRoom = tabbar.selectedRoom
         
@@ -47,20 +46,6 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         ReadPostsDoc()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        for post in self.sortedPosts {
-            print("\(post.activity) at \(post.tStamp) in vda")
-        }
-        
-    }
-    
-    
-    //MARK: Actions
-    
-    //MARK: Objects
     
     //MARK: Methods
     func ReadPostsDoc() {
@@ -91,7 +76,6 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                             
                             self.allRoomPosts.append(Post(activity: activity, petName: petName, petType: petType, tStamp: tStamp, user: user, creator: creator, roomName: roomName, postID: post.documentID))
                             
-                            print("\(self.allRoomPosts.count.description) in DispatchQ")
                         }
                         
                         self.sortedPosts = self.allRoomPosts.sorted(by: {$0.tStamp.compare($1.tStamp) == .orderedDescending})
@@ -165,19 +149,5 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

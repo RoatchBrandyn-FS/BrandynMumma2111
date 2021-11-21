@@ -52,16 +52,6 @@ class PetProfilesViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
-    
-    //MARK: Actions
-    
-    //MARK: Objects
-    
     //MARK: Methods
     
     func ReadPetProfiles() {
