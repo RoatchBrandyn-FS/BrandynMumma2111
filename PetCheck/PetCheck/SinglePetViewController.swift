@@ -138,7 +138,7 @@ class SinglePetViewController: UIViewController {
     
     func SetCorners() {
         
-        for view in [labelView, descriptionView, specificView, activitiesView] {
+        for view in [descriptionView, specificView, activitiesView] {
             view?.layer.cornerRadius = 20
         }
         

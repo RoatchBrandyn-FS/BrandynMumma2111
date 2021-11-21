@@ -17,7 +17,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //bar buttons
     @IBOutlet weak var logoutBarBtn: UIBarButtonItem!
-    @IBOutlet weak var myRoomsBarBtn: UIBarButtonItem!
     
     //MARK: Variables
     
@@ -27,9 +26,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     //arrays
     var allRooms = [Room]()
     var sortedRooms = [Room]()
-    
-    //bools
-    var userRoomOnly = true
     
     //search items
     var searchController = UISearchController(searchResultsController: nil)
@@ -166,12 +162,9 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if userRoomOnly == true {
-            return "My Rooms: \(sortedRooms.count.description)"
-        }
-        else {
-            return "Search Results: \(sortedRooms.count.description)"
-        }
+        
+        return "Search Results: \(sortedRooms.count.description)"
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -228,8 +221,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if scopeTitle == "Room Names" {
                 
-                userRoomOnly = false
-                
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.name.lowercased().range(of: searchText!.lowercased()) != nil
                 }
@@ -237,8 +228,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             else if scopeTitle == "Creators" {
-                
-                userRoomOnly = false
                 
                 sortedRooms = sortedRooms.filter { (room) -> Bool in
                     return room.creator.lowercased().range(of: searchText!.lowercased()) != nil
@@ -252,8 +241,6 @@ class AllRoomsViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         if scopeTitle == "My Rooms" {
-            
-            userRoomOnly = true
             
             sortedRooms = sortedRooms.filter({
                 

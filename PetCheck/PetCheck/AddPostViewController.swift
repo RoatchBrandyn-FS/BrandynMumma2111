@@ -35,6 +35,10 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var selectedPetRow = 0
     var selectedActivity: String!
     
+    //views
+    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var btnView: UIView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,8 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         activitiesTV.delegate = self
         activitiesTV.dataSource = self
+        
+        SetCorners()
         
     }
     
@@ -188,6 +194,22 @@ class AddPostViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         //update data
         docRef.updateData(["tStamps": allPets[selectedPetRow].tStamps])
+        
+    }
+    
+    func SetCorners() {
+        
+        for view in [labelView, btnView] {
+            
+            view?.layer.cornerRadius = 20
+            
+        }
+        
+        petPicker.layer.cornerRadius = 10
+        
+        activitiesTV.layer.cornerRadius = 10
+        
+        postBtn.layer.cornerRadius = 10
         
     }
     

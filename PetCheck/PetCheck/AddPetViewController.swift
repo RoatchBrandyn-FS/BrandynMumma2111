@@ -26,6 +26,12 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     //buttons
     @IBOutlet weak var addPet: UIButton!
     
+    //views
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var labelView: UIView!
+    @IBOutlet weak var tfView: UIView!
+    @IBOutlet weak var btnView: UIView!
+    
     
     //MARK: Variables
     
@@ -63,6 +69,8 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             activeString.append("\n- \(act)")
         }
         activitiesTextView.text = activeString
+        
+        SetCorners()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +155,21 @@ class AddPetViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 print("Error saving new pet profile")
             }
         }
+    }
+    
+    func SetCorners() {
+        
+        for view in [containerView, labelView, tfView, btnView] {
+            
+            view?.layer.cornerRadius = 20
+            
+        }
+        
+        petTypePicker.layer.cornerRadius = 10
+        activitiesTextView.layer.cornerRadius = 10
+        addPet.layer.cornerRadius = 10
+        
+        
     }
     
     //MARK: Picker View Callbacks
