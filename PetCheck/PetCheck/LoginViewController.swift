@@ -19,6 +19,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //Buttons
     @IBOutlet weak var loginBtn: UIButton!
     
+    //views
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var tfView: UIView!
+    @IBOutlet weak var btnView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    
+    
     //MARK: Variables
     var confirmedUser: User!
     var allUsers = [User]()
@@ -29,6 +36,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         emailTF.delegate = self
         passwordTF.delegate = self
+        
+        
+        SetCorners()
         
         //ReadUserDoc()
         
@@ -192,6 +202,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    func SetCorners() {
+        
+        for view in [titleView, tfView, btnView, containerView] {
+            
+            view?.layer.cornerRadius = 20
+            
+        }
+        
+        loginBtn.layer.cornerRadius = 10
+        
+        
+    }
+    
+    //MARK: Navigation callbacks
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         print(identifier)
