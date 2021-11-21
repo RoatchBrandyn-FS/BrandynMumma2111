@@ -168,11 +168,6 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9J-wW-Cfs">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="My Rooms" id="DOb-iM-1wX">
-                                        <connections>
-                                            <action selector="myRoomsTapped:" destination="uoa-vT-IVd" id="OL1-fH-oJs"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Vf1-Vs-IUR"/>
                                     <barButtonItem title="Add Room" image="plus" catalog="system" id="fhu-tV-zxQ">
                                         <connections>
@@ -181,15 +176,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlx-Fq-UaX">
-                                <rect key="frame" x="5" y="93" width="404" height="715"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlx-Fq-UaX">
+                                <rect key="frame" x="3" y="91" width="408" height="719"/>
+                                <color key="backgroundColor" red="0.41568627450980389" green="0.77647058823529413" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="room_cell_01" textLabel="Nj2-H6-fTf" detailTextLabel="qXE-fn-mCH" style="IBUITableViewCellStyleSubtitle" id="yqQ-iW-4Zc">
-                                        <rect key="frame" x="0.0" y="28" width="404" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="408" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yqQ-iW-4Zc" id="o0R-Px-Wc5">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="377" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nj2-H6-fTf">
@@ -208,20 +203,21 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.41568627450000001" green="0.77647058820000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lYc-eL-14z"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" constant="5" id="9oN-to-A8H"/>
-                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="top" secondItem="vlx-Fq-UaX" secondAttribute="bottom" constant="5" id="Jpi-wr-WSX"/>
+                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" constant="3" id="9oN-to-A8H"/>
+                            <constraint firstItem="u9J-wW-Cfs" firstAttribute="top" secondItem="vlx-Fq-UaX" secondAttribute="bottom" constant="3" id="Jpi-wr-WSX"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="leading" secondItem="lYc-eL-14z" secondAttribute="leading" id="KGo-lk-7Gn"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="trailing" secondItem="lYc-eL-14z" secondAttribute="trailing" id="SZL-NY-kw7"/>
                             <constraint firstItem="u9J-wW-Cfs" firstAttribute="bottom" secondItem="lYc-eL-14z" secondAttribute="bottom" id="Sig-X6-22K"/>
-                            <constraint firstItem="lYc-eL-14z" firstAttribute="trailing" secondItem="vlx-Fq-UaX" secondAttribute="trailing" constant="5" id="XtW-wb-tsn"/>
-                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="top" secondItem="lYc-eL-14z" secondAttribute="top" constant="5" id="aZD-Xi-DLF"/>
+                            <constraint firstItem="lYc-eL-14z" firstAttribute="trailing" secondItem="vlx-Fq-UaX" secondAttribute="trailing" constant="3" id="XtW-wb-tsn"/>
+                            <constraint firstItem="vlx-Fq-UaX" firstAttribute="top" secondItem="lYc-eL-14z" secondAttribute="top" constant="3" id="aZD-Xi-DLF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3M3-Lo-gIz">
@@ -233,7 +229,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logoutBarBtn" destination="MPq-hS-cd2" id="eLH-TK-qsF"/>
-                        <outlet property="myRoomsBarBtn" destination="DOb-iM-1wX" id="IZF-gY-0sG"/>
                         <outlet property="tableView" destination="vlx-Fq-UaX" id="C6A-ks-pmY"/>
                         <segue destination="B3M-KQ-S43" kind="show" identifier="SelectRoomToTabbed" id="6qj-Nj-aEn"/>
                     </connections>

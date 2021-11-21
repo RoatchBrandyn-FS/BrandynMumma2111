@@ -95,6 +95,8 @@ class AddRoomViewController: UIViewController, UITextFieldDelegate {
             view?.layer.cornerRadius = 20
         }
         
+        createBtn.layer.cornerRadius = 10
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
