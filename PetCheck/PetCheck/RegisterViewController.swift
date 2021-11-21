@@ -178,6 +178,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
         }
         
+        createBtn.layer.cornerRadius = 10
+        
     }
     
 
